@@ -1,0 +1,19 @@
+//
+//  chatCell.h
+//  StepUp1
+//
+//  Created by Sunayna Jain on 2/17/14.
+//  Copyright (c) 2014 LittleAuk. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface chatCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UIView *questionView;
+
+@property (weak, nonatomic) IBOutlet UIView *answerView;
+
+@property (weak, nonatomic) IBOutlet UITextView *questionTextView;
+
+@end

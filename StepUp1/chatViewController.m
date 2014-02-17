@@ -7,6 +7,7 @@
 //
 
 #import "chatViewController.h"
+#import "chatCell.h"
 
 @interface chatViewController ()
 
@@ -59,20 +60,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"chatCell";
+    chatCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell){
         
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+cell = [[[UINib nibWithNibName:@"chatCell" bundle:[NSBundle mainBundle]] instantiateWithOwner:self options:nil] objectAtIndex:0];
     }
+    
+    cell.questionTextView.text = @"event Cancelled";
     
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 130;
+    return 140;
 }
 
 /*
