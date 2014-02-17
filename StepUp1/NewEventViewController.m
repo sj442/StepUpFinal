@@ -159,23 +159,24 @@
 
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    Event* this_event = [[[[EventManager sharedInstance] populatedEvents] allValues] objectAtIndex:[indexPath row]];
+    
+    NSInteger index = [self.eventIndex integerValue];
+    Event* this_event = [[[[EventManager sharedInstance] populatedEvents] allValues] objectAtIndex:index];
     NSString* time_str = [this_event time];
 
     if (indexPath.row==0){
-        
        CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CalendarCell"];
         
             if (!cell) {
                 cell = [[[UINib nibWithNibName:@"CalendarCell" bundle:[NSBundle mainBundle]] instantiateWithOwner:self options:nil] objectAtIndex:0];
             }
         NSRange my_range;
-        my_range.location = 4;
-        my_range.length = 4;
+        my_range.location = 5;
+        my_range.length = 5 ;
         NSString* short_str = @"";
         
         if ([time_str length] > 10) {
-            [time_str substringWithRange:my_range];
+            short_str = [time_str substringWithRange:my_range];
         }
         
         cell.dateLabel.text = short_str;

@@ -33,7 +33,6 @@
 		165C897218A7B02A00018B79 /* venueGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 165C896418A7B02A00018B79 /* venueGrey.png */; };
 		165C897318A7B02A00018B79 /* clockBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 165C896518A7B02A00018B79 /* clockBlack.png */; };
 		165C897418A7B02A00018B79 /* clockGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 165C896618A7B02A00018B79 /* clockGrey.png */; };
-		165C897618A7B14F00018B79 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C897518A7B14F00018B79 /* Firebase.framework */; };
 		165C897818A7B17000018B79 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C897718A7B17000018B79 /* libicucore.dylib */; };
 		165C897A18A7B18000018B79 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C897918A7B18000018B79 /* libc++.dylib */; };
 		165C897C18A7B18700018B79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C897B18A7B18700018B79 /* CFNetwork.framework */; };
@@ -48,6 +47,11 @@
 		165C89A418A7E4A400018B79 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 165C899E18A7E4A400018B79 /* UserManager.m */; };
 		165C89A818A7FA0900018B79 /* login-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 165C89A518A7FA0900018B79 /* login-background@2x.png */; };
 		165C89A918A7FA0900018B79 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 165C89A718A7FA0900018B79 /* loginViewController.m */; };
+		165C89AB18A800CB00018B79 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 165C89AA18A800CB00018B79 /* iTunesArtwork@2x.png */; };
+		165C89AD18A8013400018B79 /* AppIcon60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 165C89AC18A8013400018B79 /* AppIcon60x60@2x.png */; };
+		1698058418B1B0CE0068A145 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1698058318B1B0CE0068A145 /* Firebase.framework */; };
+		1698058718B1B8A80068A145 /* chatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1698058618B1B8A80068A145 /* chatViewController.m */; };
+		1698058918B26ABE0068A145 /* chatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1698058818B26ABE0068A145 /* chatViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +100,6 @@
 		165C896418A7B02A00018B79 /* venueGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venueGrey.png; sourceTree = "<group>"; };
 		165C896518A7B02A00018B79 /* clockBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockBlack.png; sourceTree = "<group>"; };
 		165C896618A7B02A00018B79 /* clockGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockGrey.png; sourceTree = "<group>"; };
-		165C897518A7B14F00018B79 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		165C897718A7B17000018B79 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		165C897918A7B18000018B79 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		165C897B18A7B18700018B79 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -119,6 +122,12 @@
 		165C89A518A7FA0900018B79 /* login-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-background@2x.png"; sourceTree = "<group>"; };
 		165C89A618A7FA0900018B79 /* loginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginViewController.h; sourceTree = "<group>"; };
 		165C89A718A7FA0900018B79 /* loginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
+		165C89AA18A800CB00018B79 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		165C89AC18A8013400018B79 /* AppIcon60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@2x.png"; sourceTree = "<group>"; };
+		1698058318B1B0CE0068A145 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		1698058518B1B8A80068A145 /* chatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatViewController.h; sourceTree = "<group>"; };
+		1698058618B1B8A80068A145 /* chatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chatViewController.m; sourceTree = "<group>"; };
+		1698058818B26ABE0068A145 /* chatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = chatViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				165C898018A7B1BA00018B79 /* SystemConfiguration.framework in Frameworks */,
+				1698058418B1B0CE0068A145 /* Firebase.framework in Frameworks */,
 				165C897E18A7B19000018B79 /* Security.framework in Frameworks */,
 				165C897C18A7B18700018B79 /* CFNetwork.framework in Frameworks */,
 				165C897A18A7B18000018B79 /* libc++.dylib in Frameworks */,
@@ -134,7 +144,6 @@
 				165C892818A7AFF600018B79 /* CoreGraphics.framework in Frameworks */,
 				165C892A18A7AFF600018B79 /* UIKit.framework in Frameworks */,
 				165C892618A7AFF600018B79 /* Foundation.framework in Frameworks */,
-				165C897618A7B14F00018B79 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,12 +182,12 @@
 		165C892418A7AFF600018B79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1698058318B1B0CE0068A145 /* Firebase.framework */,
 				165C897F18A7B1BA00018B79 /* SystemConfiguration.framework */,
 				165C897D18A7B19000018B79 /* Security.framework */,
 				165C897B18A7B18700018B79 /* CFNetwork.framework */,
 				165C897918A7B18000018B79 /* libc++.dylib */,
 				165C897718A7B17000018B79 /* libicucore.dylib */,
-				165C897518A7B14F00018B79 /* Firebase.framework */,
 				165C892518A7AFF600018B79 /* Foundation.framework */,
 				165C892718A7AFF600018B79 /* CoreGraphics.framework */,
 				165C892918A7AFF600018B79 /* UIKit.framework */,
@@ -200,6 +209,9 @@
 				165C895918A7B02A00018B79 /* EventCreateViewController.h */,
 				165C895A18A7B02A00018B79 /* EventCreateViewController.m */,
 				165C89A518A7FA0900018B79 /* login-background@2x.png */,
+				1698058518B1B8A80068A145 /* chatViewController.h */,
+				1698058618B1B8A80068A145 /* chatViewController.m */,
+				1698058818B26ABE0068A145 /* chatViewController.xib */,
 				165C89A618A7FA0900018B79 /* loginViewController.h */,
 				165C89A718A7FA0900018B79 /* loginViewController.m */,
 				165C895B18A7B02A00018B79 /* EventCreateVC.xib */,
@@ -210,8 +222,10 @@
 				165C895E18A7B02A00018B79 /* EventDetailsCell.xib */,
 				165C895F18A7B02A00018B79 /* CalendarListVC.xib */,
 				165C896018A7B02A00018B79 /* CalendarCell.h */,
+				165C89AC18A8013400018B79 /* AppIcon60x60@2x.png */,
 				165C896118A7B02A00018B79 /* CalendarCell.m */,
 				165C896218A7B02A00018B79 /* CalendarCell.xib */,
+				165C89AA18A800CB00018B79 /* iTunesArtwork@2x.png */,
 				165C896318A7B02A00018B79 /* venueBlack.png */,
 				165C896418A7B02A00018B79 /* venueGrey.png */,
 				165C896518A7B02A00018B79 /* clockBlack.png */,
@@ -348,6 +362,9 @@
 				165C897418A7B02A00018B79 /* clockGrey.png in Resources */,
 				165C897318A7B02A00018B79 /* clockBlack.png in Resources */,
 				165C896D18A7B02A00018B79 /* EventDetailsCell.xib in Resources */,
+				165C89AD18A8013400018B79 /* AppIcon60x60@2x.png in Resources */,
+				1698058918B26ABE0068A145 /* chatViewController.xib in Resources */,
+				165C89AB18A800CB00018B79 /* iTunesArtwork@2x.png in Resources */,
 				165C896E18A7B02A00018B79 /* CalendarListVC.xib in Resources */,
 				165C893818A7AFF600018B79 /* Images.xcassets in Resources */,
 			);
@@ -382,6 +399,7 @@
 				165C896918A7B02A00018B79 /* NewEventViewController.m in Sources */,
 				165C89A118A7E4A400018B79 /* Post.m in Sources */,
 				165C899218A7BE4D00018B79 /* CommonClass.m in Sources */,
+				1698058718B1B8A80068A145 /* chatViewController.m in Sources */,
 				165C896718A7B02A00018B79 /* CalendarListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +522,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/swampy/Desktop/StepUp1,
+					/Users/swampy/Downloads/hackathon/stepup,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StepUp1/StepUp1-Prefix.pch";
@@ -522,6 +541,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/swampy/Desktop/StepUp1,
+					/Users/swampy/Downloads/hackathon/stepup,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StepUp1/StepUp1-Prefix.pch";
@@ -593,6 +613,7 @@
 				165C895018A7AFF700018B79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		165C895118A7AFF700018B79 /* Build configuration list for PBXNativeTarget "StepUp1Tests" */ = {
 			isa = XCConfigurationList;
@@ -601,6 +622,7 @@
 				165C895318A7AFF700018B79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

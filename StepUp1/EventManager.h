@@ -12,7 +12,6 @@
 
 #import <Foundation/Foundation.h>
 #import <Firebase/Firebase.h>
-
 #import "Event.h"
 
 @interface EventManager : NSObject

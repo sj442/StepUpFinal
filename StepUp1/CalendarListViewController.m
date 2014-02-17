@@ -153,12 +153,12 @@
     cell.headerLabel.text = ([this_event title] != nil) ? [this_event title] : @"Untitled";
     NSString* time_str = [this_event time];
     NSRange my_range;
-    my_range.location = 4;
-    my_range.length = 4;
+    my_range.location = 5;
+    my_range.length = 5;
     NSString* short_str = @"";
     
-    if ([time_str length] > 10) {
-      [time_str substringWithRange:my_range];
+    if ([time_str length] > 11) {
+      short_str = [time_str substringWithRange:my_range];
     }
 
     cell.dateLabel.text = short_str;
@@ -180,6 +180,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NewEventViewController *newEventVC = [[NewEventViewController alloc]initWithNibName:@"NewEventVC" bundle:nil];
+    
+    newEventVC.eventIndex = [[NSNumber alloc]initWithInt:indexPath.row];
     
     [self presentViewController:newEventVC animated:NO completion:nil];
 }

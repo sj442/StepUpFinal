@@ -12,5 +12,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSNumber *eventIndex;
+
 
 @end

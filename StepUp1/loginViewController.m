@@ -10,6 +10,7 @@
 #import "CommonClass.h"
 #import "CalendarListViewController.h"
 #import "EventManager.h"
+#import "chatViewController.h"
 
 @interface loginViewController ()
 
@@ -35,7 +36,7 @@
     
     self.view.backgroundColor = [[CommonClass sharedCommonClass] darkOrangeColor];
     
-    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(30,0 ,260, self.view.frame.size.height-280)];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(70,0 ,180, self.view.frame.size.height-280)];
     
     logoView.image = [UIImage imageNamed:@"login-background"];
     
@@ -77,9 +78,13 @@
 
 -(void)sendButtonPressed:(id)sender{
     
-    CalendarListViewController *calendarListVC = [[CalendarListViewController alloc]initWithNibName:@"CalendarListVC" bundle:nil];
+    //CalendarListViewController *calendarListVC = [[CalendarListViewController alloc]initWithNibName:@"CalendarListVC" bundle:nil];
     
-    [self presentViewController:calendarListVC animated:YES completion:nil];
+    //[self presentViewController:calendarListVC animated:YES completion:nil];
+    
+    chatViewController *chatVC = [[chatViewController alloc]initWithNibName:@"chatViewController" bundle:nil];
+    
+    [self presentViewController:chatVC animated:YES completion:nil];
     
 }
 

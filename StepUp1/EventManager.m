@@ -8,7 +8,7 @@
 
 #import "EventManager.h"
 
-#define kFireBaseStepupEventsPath @"https://glowing-fire-8592.firebaseio.com/stepup/events/"
+#define kFireBaseStepupEventsPath @"https://stepuphacker.firebaseio.com/stepup/events/"
 
 @implementation EventManager
 

@@ -8,7 +8,7 @@
 
 #import "UserManager.h"
 
-#define kFireBaseStepupUsersPath @"https://glowing-fire-8592.firebaseio.com/stepup/users/"
+#define kFireBaseStepupUsersPath @"https://stepuphacker.firebaseio.com/stepup/users/"
 
 @implementation UserManager
 

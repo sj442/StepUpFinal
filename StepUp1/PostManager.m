@@ -8,7 +8,7 @@
 
 #import "PostManager.h"
 
-#define kFireBaseStepupPostsPath @"https://glowing-fire-8592.firebaseio.com/stepup/posts/"
+#define kFireBaseStepupPostsPath @"https://stepuphacker.firebaseio.com/stepup/posts/"
 
 @implementation PostManager
 

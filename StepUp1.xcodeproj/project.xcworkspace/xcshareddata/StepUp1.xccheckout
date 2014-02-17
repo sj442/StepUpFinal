@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DD1B3483-F973-43F8-A191-334782918C3B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>StepUp1</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>578EE9C8-F762-46CE-9CFC-EAF5C3884EE9</key>
+		<string>ssh://github.com/sj442/StepUpFinal.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>StepUp1.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>578EE9C8-F762-46CE-9CFC-EAF5C3884EE9</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/sj442/StepUpFinal.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>578EE9C8-F762-46CE-9CFC-EAF5C3884EE9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>578EE9C8-F762-46CE-9CFC-EAF5C3884EE9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>stepup</string>
+		</dict>
+	</array>
+</dict>
+</plist>
