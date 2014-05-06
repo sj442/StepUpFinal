@@ -35,7 +35,6 @@
 
 - (Event *) getEventWithEventId: (NSString *) eventId;
 - (Event *) fetchEventWithEventId: (NSString *) eventId;
-//- (void) fetchAllEvents;
 
 -(void)fetchAllEventsWithCompletionHandler:(void (^) (NSMutableDictionary *dictionary))completonHandler;
 

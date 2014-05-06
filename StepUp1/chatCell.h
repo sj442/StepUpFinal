@@ -10,10 +10,11 @@
 
 @interface chatCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *questionView;
-
-@property (weak, nonatomic) IBOutlet UIView *answerView;
-
 @property (weak, nonatomic) IBOutlet UITextView *questionTextView;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameTextField;
+
+@property (weak, nonatomic) IBOutlet UILabel *dateTextField;
+
 
 @end

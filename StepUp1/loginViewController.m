@@ -77,14 +77,14 @@
 }
 
 -(void)sendButtonPressed:(id)sender{
-//    
-//    CalendarListViewController *calendarListVC = [[CalendarListViewController alloc]initWithNibName:@"CalendarListVC" bundle:nil];
-//    
-//    [self presentViewController:calendarListVC animated:YES completion:nil];
     
-    chatViewController *chatVC = [[chatViewController alloc]init];
+    CalendarListViewController *calendarListVC = [[CalendarListViewController alloc]initWithNibName:@"CalendarListVC" bundle:nil];
     
-    [self presentViewController:chatVC animated:YES completion:nil];
+    [self presentViewController:calendarListVC animated:YES completion:nil];
+    
+//    chatViewController *chatVC = [[chatViewController alloc]init];
+//    
+//    [self presentViewController:chatVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

@@ -21,7 +21,6 @@
         sharedInstance.firebase = [[Firebase alloc] initWithUrl:kFireBaseStepupPostsPath];
         sharedInstance.populatedPosts = [[NSMutableDictionary alloc] init];
     });
-    
     return sharedInstance;
 }
 
@@ -43,12 +42,17 @@
     
     [post setPostId:[newPostRef name]];
     
+    Comment *nullComment = [[Comment alloc]initWithCommentId:@"" andUser:@"" andCommentText:@"No Comments yet" andTimeStamp:[NSNumber numberWithInt:0]];
+    
+    [post.comments addObject:nullComment];
+    
     [newPostRef setValue:@{@"time": postTimeString,
                            @"type": postType,
                            @"title": [post title],
                            @"text": [post text],
                            @"userId": [post userId],
                            @"eventId": [post eventId],
+                           @"comments": [post comments]
                           }
      withCompletionBlock:^(NSError *error, Firebase *ref) {
           if (error) {
@@ -63,7 +67,6 @@
           }
       }
      ];
-
 }
 - (void) deletePost:(Post *) post {
     Firebase *fb = [[PostManager sharedInstance] firebase];
@@ -85,14 +88,16 @@
     Firebase *newCommentRef = [commentsRef childByAutoId];
     
     [comment setCommentId:[newCommentRef name]];
-    [newCommentRef setValue:[comment data] withCompletionBlock:^(NSError *error, Firebase *ref) {
+    [newCommentRef setValue:@{@"commentID": comment.commentId,
+                              @"name":comment.userName,
+                              @"text":comment.commentText,
+                              @"timeStamp":comment.commentTimeStamp} withCompletionBlock:^(NSError *error, Firebase *ref) {
         if (error) {
             NSLog(@"PostManager::addCommentToPost ALERT! Comment addition failed %@", [comment commentId]);
         } else {
             NSLog(@"PostManager::addCommentToPost Comment added successfully");
         }
     }];
-    
 }
 - (void) deleteCommentFromPost:(Post *) post andComment: (Comment *) comment {
     Firebase *fb = [[PostManager sharedInstance] firebase];

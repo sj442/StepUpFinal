@@ -24,7 +24,8 @@
     return self;
 }
 
--(id)init {
+-(id)init
+{
     return [self initWithUserId:0 andName:@"UnNamed" andType:MENTEE andEmail:@"xxxxxx@gmail.com" andLocation:@"New York City"];
 }
 

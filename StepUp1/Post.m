@@ -3,18 +3,19 @@
 //  StepUp
 //
 //  Created by Sachin Jindal on 2/8/14.
-//
-//
 
 #import "Post.h"
 
 @implementation Comment
 
-- (id) initWithCommentId: (NSString*) commentId andData:(NSDictionary *)data {
+- (id) initWithCommentId: (NSString*) commentId andUser:(NSString*) user andCommentText:(NSString *)text andTimeStamp:(NSNumber *)timeStamp
+{
     self = [super init];
     if (self) {
         self.commentId = commentId;
-        self.data = data;
+        self.userName = user;
+        self.commentText = text;
+        self.commentTimeStamp = timeStamp;
     }
     return self;
 }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1607C35A1919310A008BF027 /* chatDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C3591919310A008BF027 /* chatDetailViewController.m */; };
+		1607C35D19196D27008BF027 /* postCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C35C19196D27008BF027 /* postCell.m */; };
+		1607C35F19196D4D008BF027 /* postCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1607C35E19196D4D008BF027 /* postCell.xib */; };
+		1607C36219197E64008BF027 /* CommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C36119197E64008BF027 /* CommentManager.m */; };
 		1632DBA218E21FDC00D876B9 /* EventCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1632DBA118E21FDC00D876B9 /* EventCreateVC.m */; };
 		165C892618A7AFF600018B79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892518A7AFF600018B79 /* Foundation.framework */; };
 		165C892818A7AFF600018B79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892718A7AFF600018B79 /* CoreGraphics.framework */; };
@@ -73,6 +76,11 @@
 /* Begin PBXFileReference section */
 		1607C3581919310A008BF027 /* chatDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatDetailViewController.h; sourceTree = "<group>"; };
 		1607C3591919310A008BF027 /* chatDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chatDetailViewController.m; sourceTree = "<group>"; };
+		1607C35B19196D27008BF027 /* postCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postCell.h; sourceTree = "<group>"; };
+		1607C35C19196D27008BF027 /* postCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postCell.m; sourceTree = "<group>"; };
+		1607C35E19196D4D008BF027 /* postCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = postCell.xib; sourceTree = "<group>"; };
+		1607C36019197E64008BF027 /* CommentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentManager.h; sourceTree = "<group>"; };
+		1607C36119197E64008BF027 /* CommentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentManager.m; sourceTree = "<group>"; };
 		1632DBA018E21FDC00D876B9 /* EventCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCreateVC.h; sourceTree = "<group>"; };
 		1632DBA118E21FDC00D876B9 /* EventCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCreateVC.m; sourceTree = "<group>"; };
 		165C892218A7AFF600018B79 /* StepUp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepUp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +289,7 @@
 				165C896218A7B02A00018B79 /* CalendarCell.xib */,
 				165C895618A7B02A00018B79 /* NewEventVC.xib */,
 				1698058A18B2770D0068A145 /* chatCell.xib */,
+				1607C35E19196D4D008BF027 /* postCell.xib */,
 				165C895B18A7B02A00018B79 /* EventCreateViewController.xib */,
 				165C895E18A7B02A00018B79 /* EventDetailsCell.xib */,
 				165C895F18A7B02A00018B79 /* CalendarListVC.xib */,
@@ -301,6 +310,8 @@
 				165C899618A7E4A400018B79 /* EventManager.m */,
 				165C899918A7E4A400018B79 /* PostManager.h */,
 				165C899A18A7E4A400018B79 /* PostManager.m */,
+				1607C36019197E64008BF027 /* CommentManager.h */,
+				1607C36119197E64008BF027 /* CommentManager.m */,
 				165C899D18A7E4A400018B79 /* UserManager.h */,
 				165C899E18A7E4A400018B79 /* UserManager.m */,
 			);
@@ -333,6 +344,8 @@
 			children = (
 				1698058C18B29ACE0068A145 /* chatCell.h */,
 				1698058D18B29ACE0068A145 /* chatCell.m */,
+				1607C35B19196D27008BF027 /* postCell.h */,
+				1607C35C19196D27008BF027 /* postCell.m */,
 				165C895C18A7B02A00018B79 /* EventDetailsCell.h */,
 				165C895D18A7B02A00018B79 /* EventDetailsCell.m */,
 				165C896118A7B02A00018B79 /* CalendarCell.m */,
@@ -422,6 +435,7 @@
 				1675E9021912FAFE0033B067 /* trash.png in Resources */,
 				165C897118A7B02A00018B79 /* venueBlack.png in Resources */,
 				165C896B18A7B02A00018B79 /* EventCreateViewController.xib in Resources */,
+				1607C35F19196D4D008BF027 /* postCell.xib in Resources */,
 				165C893018A7AFF600018B79 /* InfoPlist.strings in Resources */,
 				1675E8FF1912CE870033B067 /* checkmark@2x.png in Resources */,
 				165C897018A7B02A00018B79 /* CalendarCell.xib in Resources */,
@@ -463,10 +477,12 @@
 				1698058E18B29ACE0068A145 /* chatCell.m in Sources */,
 				165C89A218A7E4A400018B79 /* PostManager.m in Sources */,
 				165C896A18A7B02A00018B79 /* EventCreateViewController.m in Sources */,
+				1607C35D19196D27008BF027 /* postCell.m in Sources */,
 				165C89A418A7E4A400018B79 /* UserManager.m in Sources */,
 				165C896C18A7B02A00018B79 /* EventDetailsCell.m in Sources */,
 				165C896918A7B02A00018B79 /* NewEventViewController.m in Sources */,
 				165C89A118A7E4A400018B79 /* Post.m in Sources */,
+				1607C36219197E64008BF027 /* CommentManager.m in Sources */,
 				165C899218A7BE4D00018B79 /* CommonClass.m in Sources */,
 				1607C35A1919310A008BF027 /* chatDetailViewController.m in Sources */,
 				1698058718B1B8A80068A145 /* chatViewController.m in Sources */,

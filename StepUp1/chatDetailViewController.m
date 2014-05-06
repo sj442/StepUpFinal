@@ -7,9 +7,14 @@
 //
 
 #import "chatDetailViewController.h"
+#import "PostManager.h"
 #import "CommonClass.h"
+#import "chatCell.h"
 
 @interface chatDetailViewController ()
+{
+    UIButton *sendButton;
+}
 
 @property (strong, nonatomic) UITableView *tableView;
 
@@ -19,6 +24,12 @@
 
 @property (strong, nonatomic) UIView *chatView;
 
+-(void) registerForKeyboardNotifications;
+
+-(void) keyboardWasShown:(NSNotification*)aNotification;
+
+-(void) keyboardWillHide:(NSNotification*)aNotification;
+
 @end
 
 @implementation chatDetailViewController
@@ -26,7 +37,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -35,6 +47,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self registerForKeyboardNotifications];
     
     self.view.backgroundColor = [[CommonClass sharedCommonClass] darkOrangeColor];
     
@@ -54,7 +68,7 @@
     
     self.questionView.userInteractionEnabled = NO;
     
-    self.chatView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-70, self.view.frame.size.width, 70)];
+    self.chatView = [[UIView alloc]initWithFrame:CGRectMake(0, 498, self.view.frame.size.width, 70)];
     
     [self.view addSubview:self.chatView];
     
@@ -66,9 +80,11 @@
     
     self.chatTextField.placeholder = @"Type a message...";
     
+    self.chatTextField.delegate = self;
+    
     [self.chatView addSubview:self.chatTextField];
     
-    UIButton *sendButton = [[UIButton alloc]initWithFrame:CGRectMake(240, 10, 75, 50)];
+    sendButton = [[UIButton alloc]initWithFrame:CGRectMake(240, 10, 75, 50)];
     
     [sendButton setTitle:@"Send" forState:UIControlStateNormal];
     
@@ -86,9 +102,15 @@
     
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, statusBarHeight+self.questionView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-statusBarHeight-self.questionView.frame.size.height-self.chatView.frame.size.height) style:UITableViewStylePlain];
     
+    UINib *nib = [UINib nibWithNibName:@"chatCell" bundle:[NSBundle mainBundle]];
+    
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"chatCell"];
+    
     self.tableView.dataSource = self;
     
     self.tableView.delegate = self;
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.view addSubview:self.tableView];
 
@@ -97,8 +119,26 @@
 
 -(void)sendButtonPressed:(id)sender
 {
+    [self.chatTextField resignFirstResponder];
     
-
+    NSDate *date = [NSDate date];
+    
+    int timeInterval = [date timeIntervalSince1970];
+    
+    Comment *comment = [[Comment alloc] initWithCommentId:@"" andUser:@"Sunayna Jain" andCommentText:self.chatTextField.text andTimeStamp:[ NSNumber numberWithInt:timeInterval]];
+    
+//    Comment *firstComment = [self.post.comments firstObject];
+//    
+//    if ([firstComment.userName isEqualToString:@""] || [firstComment.commentTimeStamp isEqualToNumber:[NSNumber numberWithInt:0]])
+//    {
+//        [self.post.comments removeObject:firstComment];
+//    }
+    
+    [self.post addComment:comment];
+    
+    [[PostManager sharedInstance] addCommentToPost:self.post andComment:comment];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,31 +156,143 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if ([self.post.comments count]>0)
+    {
+    return [self.post.comments count];
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    chatCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"chatCell"];
     
     cell.contentView.backgroundColor = [UIColor whiteColor];
     
     if (!cell)
     {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[chatCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chatCell"];
     }
+    
+    if ([((Comment*)self.post.comments[indexPath.row]).userName isEqualToString:@""])
+    {
+        cell.questionTextView.text = @"No Comments yet. Start a conversation!";
+        
+        cell.nameTextField.text = @"";
+        
+        cell.dateTextField.text = @"";
+    }
+    else
+    {
+        cell.questionTextView.text = [self.post.comments objectAtIndex:[self.post.comments count]-(indexPath.row+1)];
+        
+        cell.nameTextField.text = @"Sunayna Jain";
+        
+        cell.dateTextField.text = @"2:30 PM, Today";
+    }
+    
     return cell;
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Chat textfield
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(IBAction) textFieldDoneEditing : (id) sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSLog(@"the text content%@",self.chatTextField.text);
+    [sender resignFirstResponder];
+    [self.chatTextField resignFirstResponder];
 }
-*/
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+//    if (self.chatTextField.text.length>0)
+//    {
+//        [sendButton setBackgroundColor:[[CommonClass sharedCommonClass] darkOrangeColor]];
+//        
+//        [sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    }
+//    else
+//    {
+//        [sendButton setBackgroundColor:[UIColor clearColor]];
+//        
+//        [sendButton setTitleColor:[[CommonClass sharedCommonClass] darkOrangeColor] forState:UIControlStateNormal];
+//    }
+    return YES;
+}
+
+-(IBAction) backgroundTap:(id) sender
+{
+    [self.chatTextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSLog(@"the text content%@",self.chatTextField.text);
+    
+    [textField resignFirstResponder];
+   
+    return YES;
+}
+
+#pragma mark-Keyboard handling methods
+
+-(void) registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void) keyboardWasShown:(NSNotification*)aNotification
+{
+    NSLog(@"Keyboard was shown");
+    NSDictionary* info = [aNotification userInfo];
+    
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    CGRect keyboardFrame;
+    
+    [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
+    [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
+    [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] getValue:&keyboardFrame];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:animationCurve];
+    
+    NSLog(@"chat view y origin %f", self.chatView.frame.origin.y);
+    
+    [self.chatView setFrame:CGRectMake(self.chatView.frame.origin.x, self.chatView.frame.origin.y- keyboardFrame.size.height, self.chatView.frame.size.width, self.chatView.frame.size.height)];
+    
+    [self.view addSubview:self.chatView];
+    
+    [UIView commitAnimations];
+}
+
+-(void) keyboardWillHide:(NSNotification*)aNotification
+{
+    NSLog(@"Keyboard will hide");
+    NSDictionary* info = [aNotification userInfo];
+    
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    CGRect keyboardFrame;
+    [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
+    [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
+    [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] getValue:&keyboardFrame];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:animationCurve];
+    
+    [self.chatView setFrame:CGRectMake(self.chatView.frame.origin.x, self.chatView.frame.origin.y+keyboardFrame.size.height, self.chatView.frame.size.width, self.chatView.frame.size.height)];
+    
+    [self.view addSubview:self.chatView];
+    
+    [UIView commitAnimations];
+}
 
 @end

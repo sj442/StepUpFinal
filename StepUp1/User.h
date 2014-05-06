@@ -21,6 +21,7 @@ typedef NS_OPTIONS(NSUInteger, UserType) {
 @property UserType type;
 @property  (strong, nonatomic) NSString *email;
 @property  (strong, nonatomic) NSString *location;
+@property  (strong, nonatomic) NSString *registrationCode;
 
 - (id) initWithUserId: (NSString*) userId andName: (NSString*) name andType: (UserType) type
              andEmail: (NSString*) email andLocation: (NSString*) location;

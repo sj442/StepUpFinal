@@ -8,7 +8,7 @@
 
 #import "chatViewController.h"
 #import "chatDetailViewController.h"
-#import "chatCell.h"
+#import "postCell.h"
 #import "CommonClass.h"
 #import "PostManager.h"
 #import "Post.h"
@@ -16,7 +16,6 @@
 @interface chatViewController ()
 
 {
-    BOOL answerRow;
     
 }
 
@@ -52,9 +51,9 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
         
-    UINib *nib = [UINib nibWithNibName:@"chatCell" bundle:nil];
+    UINib *nib = [UINib nibWithNibName:@"postCell" bundle:nil];
     
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"chatCell"];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"postCell"];
     
     UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-25, self.view.frame.size.height/2-25, 50, 50)];
     
@@ -94,10 +93,7 @@
     {
         return 1;
     }
-    else if (answerRow)
-    {
-        return ([[[PostManager sharedInstance] populatedPosts] count] +1);
-    }
+   
     else
     {
         return [[[PostManager sharedInstance] populatedPosts] count];
@@ -106,27 +102,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"chatCell";
+    static NSString *CellIdentifier = @"postCell";
     
-    chatCell *cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    postCell *cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.questionTextView.text = @"";
+    cell.postTextView.text = @"";
     
     if (!cell)
     {
 //        cell = [[[UINib nibWithNibName:@"chatCell" bundle:[NSBundle mainBundle]] instantiateWithOwner:self options:nil] objectAtIndex:0];
         
-        cell = [[chatCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[postCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.contentView.backgroundColor = [UIColor whiteColor];
     
-    cell.questionTextView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
+    cell.postTextView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
     
-    cell.questionTextView.userInteractionEnabled = NO;
+    cell.postTextView.userInteractionEnabled = NO;
     
     if ([[[PostManager sharedInstance] populatedPosts] count]==0)
     {
-       cell.questionTextView.text = @"No Posts";
+       cell.postTextView.text = @"No Posts";
     }
     else
     {
@@ -136,11 +132,11 @@
     
         NSString *postString = [NSString stringWithFormat:@"%@:%@", this_post.title, this_post.text];
         
-        cell.questionTextView.text = postString;
+        cell.postTextView.text = postString;
         
-        cell.questionTextView.textColor = [UIColor whiteColor];
+        cell.postTextView.textColor = [UIColor whiteColor];
         
-        cell.questionTextView.font = [UIFont fontWithName:@"Futura" size:15];
+        cell.postTextView.font = [UIFont fontWithName:@"Futura" size:15];
         }
     }
     return cell;

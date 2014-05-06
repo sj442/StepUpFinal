@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 typedef NS_OPTIONS(NSUInteger, PostType) {
     POST_EVENTUPDATE = 0,
@@ -16,9 +17,11 @@ typedef NS_OPTIONS(NSUInteger, PostType) {
 
 @interface Comment: NSObject
 @property  (strong, nonatomic) NSString *commentId;
-@property  (strong, nonatomic) NSDictionary* data;
+@property  (strong, nonatomic) NSString *userName;
+@property  (strong, nonatomic) NSNumber *commentTimeStamp;
+@property  (strong, nonatomic) NSString *commentText;
 
-- (id) initWithCommentId:(NSString*) commentID andData:(NSDictionary*) data;
+- (id) initWithCommentId:(NSString*) commentID andUser:(NSString*) user andCommentText:(NSString*)text andTimeStamp:(NSNumber*) timeStamp;
 
 @end
 

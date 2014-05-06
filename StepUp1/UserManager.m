@@ -73,10 +73,12 @@
                    @"type": user_type,
                    @"email": [user email],
                    @"location": [user location]} withCompletionBlock:^(NSError *error, Firebase *ref) {
-                       if (error) {
+                       if (error)
+                       {
                            NSLog(@"UserManager::addUserToDatabase ALERT! User Addition failed: %@",
                                  [user name]);
-                       } else {
+                       } else
+                       {
                            user_added = true;
                            NSLog(@"UserManager::addUserToDatabase User added successfully: %@ with id: %@",
                                  [user name], userId);
@@ -90,10 +92,12 @@
     fb = [[[UserManager sharedInstance] firebase] childByAppendingPath:auth_path];
     __block BOOL auth_added = false;
     [fb setValue:userId withCompletionBlock:^(NSError *error, Firebase *ref) {
-        if (error) {
+        if (error)
+        {
             NSLog(@"UserManager::addUserToDatabase ALERT! User Authcode addition failed: %@",
                   userId);
-        } else {
+        } else
+        {
             NSLog(@"UserManager::addUserToDatabase User authcode added successfully: %@ with authcode: %@",
                   userId, authCode);
             auth_added = true;
