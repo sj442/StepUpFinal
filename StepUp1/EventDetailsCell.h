@@ -18,8 +18,13 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *venueTextview;
 
-
 @property (weak, nonatomic) IBOutlet UITextView *eventDetailsTextView;
+
+@property (weak, nonatomic) IBOutlet UIButton *checkButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
+
+
 
 
 

@@ -23,7 +23,7 @@
 
 @implementation Post
 
-- (id) initWithPostId: (NSString*) postId andType: (PostType) type andTitle: (NSString*) title andText: (NSString *) text andTime: (NSDate *) time andUserId: (NSString*) userId andEventId:(NSString *)eventId {
+- (id) initWithPostId: (NSString*) postId andType: (PostType) type andTitle: (NSString*) title andText: (NSString*) text andTime: (NSDate *) time andUserId: (NSString*) userId andEventId:(NSString *)eventId {
     self = [super init];
     if (self) {
         self.postId = postId;
@@ -44,7 +44,5 @@
 - (void) addComment: (Comment *) comment {
     [self.comments addObject:comment];
 }
-
-
 
 @end

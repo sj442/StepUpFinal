@@ -10,10 +10,8 @@
 
 @implementation Event
 
-- (id) initWithEventId: (NSString*) eventId andType: (EventType) type andStatus: (EventStatus) status
-              andTitle: (NSString*) title
-        andDescription: (NSString*) description andTime: (NSString*) time andDuration: (NSNumber*) duration
-                andUrl: (NSString*) url andLocation: (NSString*) location andUserResponse:(NSDictionary *)userResponse {
+- (id) initWithEventId:(NSString *)eventId andType:(EventType)type andStatus:(EventStatus)status andTitle:(NSString *)title andDescription:(NSString *)description andTime:(NSString *)time andDate:(NSString *)date andEventTimeStamp:(NSNumber *)eventTimeStamp andDuration:(NSNumber *)duration andUrl:(NSString *)url andLocation:(NSString *)location andUserResponse:(NSDictionary *)userResponse
+{
     self = [super init];
     if (self) {
         self.eventId = eventId;
@@ -22,29 +20,28 @@
         self.title = title;
         self.description = description;
         self.time = time;
+        self.date = date;
+        self.eventTimeStamp = eventTimeStamp;
         self.duration = duration;
         self.url = url;
         self.location = location;
         self.userResponse = userResponse;
-        
     }
     return self;
 }
 
 - (id) init {
-return [self initWithEventId:0 andType:EVENT_TEEN andStatus:EVENT_SCHEDULED andTitle:@"UNTITLED"
-              andDescription:@"" andTime:@"" andDuration:0 andUrl:@"http://www.google.com"
-                 andLocation:@"New York City" andUserResponse:nil];
+    return [self initWithEventId:0 andType:EVENT_TEEN andStatus:EVENT_SCHEDULED andTitle:@"UNTITLED" andDescription:@"" andTime:@"" andDate:@"" andEventTimeStamp:0 andDuration:0 andUrl:@"http://www.google.com" andLocation:@"New York City" andUserResponse:nil];
 }
 
-- (BOOL) validateEvent {
+- (BOOL) validateEvent
+{
     if (self.title == nil ||
-        self.description == nil ||
+        self.date==nil ||
         self.location == nil ||
         self.time == nil ||
-        self.duration == nil ||
-        self.url == nil ||
-        self.userResponse == nil) {
+        self.url == nil)
+         {
         NSLog(@"Event INVALID: title %@ desc %@ location %@ time %@ duration %@ url %@ userResponse %@",
               self.title, self.description, self.location, self.time, self.duration, self.url, self.userResponse);
         return FALSE;
@@ -63,9 +60,9 @@ return [self initWithEventId:0 andType:EVENT_TEEN andStatus:EVENT_SCHEDULED andT
             [attendees addObject:key];
         }
     }
-    
     return attendees;
 }
+
 - (int) numberOfConfirmedResponses {
     NSEnumerator *enumerator = [self.userResponse keyEnumerator];
     id key;
@@ -77,7 +74,6 @@ return [self initWithEventId:0 andType:EVENT_TEEN andStatus:EVENT_SCHEDULED andT
             count++;
         }
     }
-    
     return count;
 }
 
@@ -106,7 +102,6 @@ return [self initWithEventId:0 andType:EVENT_TEEN andStatus:EVENT_SCHEDULED andT
             count++;
         }
     }
-    
     return count;
 }
 

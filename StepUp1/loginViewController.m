@@ -31,8 +31,8 @@
 {
     [super viewDidLoad];
     
-    EventManager* em = [EventManager sharedInstance];
-    [em fetchAllEvents];
+    //EventManager* em = [EventManager sharedInstance];
+    //[em fetchAllEvents];
     
     self.view.backgroundColor = [[CommonClass sharedCommonClass] darkOrangeColor];
     
@@ -77,15 +77,14 @@
 }
 
 -(void)sendButtonPressed:(id)sender{
+//    
+//    CalendarListViewController *calendarListVC = [[CalendarListViewController alloc]initWithNibName:@"CalendarListVC" bundle:nil];
+//    
+//    [self presentViewController:calendarListVC animated:YES completion:nil];
     
-    //CalendarListViewController *calendarListVC = [[CalendarListViewController alloc]initWithNibName:@"CalendarListVC" bundle:nil];
-    
-    //[self presentViewController:calendarListVC animated:YES completion:nil];
-    
-    chatViewController *chatVC = [[chatViewController alloc]initWithNibName:@"chatViewController" bundle:nil];
+    chatViewController *chatVC = [[chatViewController alloc]init];
     
     [self presentViewController:chatVC animated:YES completion:nil];
-    
 }
 
 - (void)didReceiveMemoryWarning

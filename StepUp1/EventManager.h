@@ -19,17 +19,24 @@
 + (EventManager *) sharedInstance;
 
 @property (nonatomic, strong) Firebase* firebase;
-@property NSMutableDictionary* populatedEvents;
+@property (nonatomic, strong) NSMutableDictionary* populatedEvents;
 
-- (BOOL) addNewEvent:(Event *) event;
-- (BOOL) modifyEvent:(Event *) oldEvent andNewEvent:(Event *) newEvent;
+- (BOOL) addNewEvent:(Event *) event withcompletionHandler:(void (^)(NSError *error))completionHandler;
+
+- (BOOL) modifyEvent:(Event *) oldEvent andNewEvent:(Event *) newEvent withCompletionHandler:(void (^)(NSError *error))completionHandler;
+
 - (BOOL) cancelEvent:(Event *) event;
-- (BOOL) deleteEvent:(Event *) event;
+
+- (BOOL) deleteEvent:(Event *) event withCompletionHandler:(void (^)(NSError *error))completionHandler;
+
 - (BOOL) postponeEvent:(Event *) event andNewTime:(NSString *) newTime;
+
 - (BOOL) rsvpEvent:(Event *) event andUser:(NSString *) userid andResponse:(RSVPResponse) response;
 
 - (Event *) getEventWithEventId: (NSString *) eventId;
 - (Event *) fetchEventWithEventId: (NSString *) eventId;
-- (void) fetchAllEvents;
+//- (void) fetchAllEvents;
+
+-(void)fetchAllEventsWithCompletionHandler:(void (^) (NSMutableDictionary *dictionary))completonHandler;
 
 @end

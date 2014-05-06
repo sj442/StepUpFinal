@@ -3,8 +3,6 @@
 //  StepUp
 //
 //  Created by Sunayna Jain on 2/8/14.
-//
-//
 
 #import "NewEventViewController.h"
 #import "CalendarCell.h"
@@ -12,6 +10,7 @@
 #import "CalendarListViewController.h"
 #import "CommonClass.h"
 #import "EventManager.h"
+#import "EventCreateVC.h"
 
 @interface NewEventViewController ()
 
@@ -35,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -45,13 +44,20 @@
     
     [self addingMaybeButton];
     
-     [self addingNoButton];
+    [self addingNoButton];
     
-        	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
 }
 
--(void)addingRSVPLabel{
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
+    [self.tableView reloadData];
+}
+
+-(void)addingRSVPLabel
+{
     UILabel *rsvpLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 520, 60, 40)];
     rsvpLabel.text = @"RSVP";
     rsvpLabel.font = [UIFont fontWithName:@"Futura" size:17];
@@ -59,8 +65,8 @@
     
 }
 
--(void)addingYesButton{
-    
+-(void)addingYesButton
+{
     UIColor *orange = [[CommonClass sharedCommonClass] darkOrangeColor];
 
     self.yesButton = [[UIButton alloc]initWithFrame:CGRectMake(90, 520, 50, 40)];
@@ -72,14 +78,12 @@
     [self.yesButton addTarget:self action:@selector(yesButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.yesButton];
-    
 }
 
--(void)addingMaybeButton{
-    
+-(void)addingMaybeButton
+{
     UIColor *orange = [[CommonClass sharedCommonClass] darkOrangeColor];
 
-    
     self.maybeButton = [[UIButton alloc]initWithFrame:CGRectMake(160, 520, 60, 40)];
     self.maybeButton.layer.borderColor = [[CommonClass sharedCommonClass] darkOrangeColor].CGColor;
     self.maybeButton.layer.borderWidth = 3.0f;
@@ -92,8 +96,8 @@
 }
 
 
--(void)addingNoButton{
-    
+-(void)addingNoButton
+{
     UIColor *orange = [[CommonClass sharedCommonClass] darkOrangeColor];
 
     self.noButton = [[UIButton alloc]initWithFrame:CGRectMake(240, 520, 50, 40)];
@@ -105,9 +109,8 @@
     [self.noButton addTarget:self action:@selector(noButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.noButton];
-    
-
 }
+
 #pragma mark-TableView DataSource methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -162,7 +165,7 @@
     
     NSInteger index = [self.eventIndex integerValue];
     Event* this_event = [[[[EventManager sharedInstance] populatedEvents] allValues] objectAtIndex:index];
-    NSString* time_str = [this_event time];
+   // NSString* time_str = [this_event time];
 
     if (indexPath.row==0){
        CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CalendarCell"];
@@ -170,20 +173,17 @@
             if (!cell) {
                 cell = [[[UINib nibWithNibName:@"CalendarCell" bundle:[NSBundle mainBundle]] instantiateWithOwner:self options:nil] objectAtIndex:0];
             }
-        NSRange my_range;
-        my_range.location = 5;
-        my_range.length = 5 ;
-        NSString* short_str = @"";
+//        NSRange my_range;
+//        my_range.location = 5;
+//        my_range.length = 5 ;
+//        NSString* short_str = @"";
+//        
+//        if ([time_str length] > 10) {
+//            short_str = [time_str substringWithRange:my_range];
+//        }
         
-        if ([time_str length] > 10) {
-            short_str = [time_str substringWithRange:my_range];
-        }
-        
-        cell.dateLabel.text = short_str;
-
         ((CalendarCell*)cell).headerLabel.text = ([this_event title] != nil) ? [this_event title] : @"Untitled";
-        ((CalendarCell*)cell).dateLabel.text = short_str;
-        ((CalendarCell*)cell).colorLabel.text = @"";
+        ((CalendarCell*)cell).dateLabel.text = this_event.date;
         ((CalendarCell*)cell).headerLabel.font = [UIFont fontWithName:@"Futura" size:18];
         ((CalendarCell*)cell).dateLabel.font = [UIFont fontWithName:@"Futura" size:18];
         
@@ -199,41 +199,65 @@
         if(!cell){
         cell = [[[UINib nibWithNibName:@"EventDetailsCell" bundle:[NSBundle mainBundle]] instantiateWithOwner:self options:nil] objectAtIndex:0];
         }
-        cell.timeLabel.text = @"6 PM";
+        cell.timeLabel.text = this_event.time;
         cell.timeLabel.font = [UIFont fontWithName:@"Futura" size:17];
         cell.timeIcon.image = [UIImage imageNamed:@"venueBlack.png"];
         cell.venueIcon.image = [UIImage imageNamed:@"clockBlack.png"];
-//        NSString *address =
-//        NSString *firstLine = @"Macy's Hearld Square";
-//        NSString *secondLine = @"151 W 34th Street";
-//        NSString *thirdLine = @"New York, 10010";
         NSString *combined = [NSString stringWithFormat:@"%@\n", [this_event location]];
         cell.venueTextview.text = combined;
         cell.venueTextview.backgroundColor = [UIColor clearColor];
         cell.venueTextview.font = [UIFont fontWithName:@"Futura" size:17];
+        cell.venueTextview.userInteractionEnabled = NO;
+        
         cell.eventDetailsTextView.text = [this_event description];
+        cell.eventDetailsTextView.userInteractionEnabled = NO;
         cell.eventDetailsTextView.font = [UIFont fontWithName:@"Futura" size:17];
         cell.eventDetailsTextView.backgroundColor = [UIColor clearColor];
         cell.backgroundColor = [UIColor colorWithRed:248.0/255.0 green:165.0/255.0 blue:66.0/255.0 alpha:0.2];
-//        cell.rsvpLabel.text = @"RSVP";
-//        cell.rsvpLabel.font = [UIFont fontWithName:@"Futura" size:17];
-//        cell.yesButton.layer.borderColor = [UIColor blueColor].CGColor;
-//        cell.yesButton.layer.borderWidth = 3.0f;
-//        cell.yesButton.titleLabel.font = [UIFont fontWithName:@"Futura" size:17];
-//        [cell.yesButton addTarget:self action:@selector(yesButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-//        cell.maybeButton.layer.borderColor = [UIColor blueColor].CGColor;
-//        cell.maybeButton.layer.borderWidth = 3.0f;
-//        cell.maybeButton.titleLabel.font = [UIFont fontWithName:@"Futura" size:17];
-//        [cell.maybeButton addTarget:self action:@selector(maybeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-//        cell.noButton.layer.borderColor = [UIColor blueColor].CGColor;
-//        cell.noButton.layer.borderWidth = 3.0f;
-//        [cell.noButton addTarget:self action:@selector(noButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-//        cell.noButton.titleLabel.font = [UIFont fontWithName:@"Futura" size:17];
+        [cell.checkButton setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
         
+        [cell.checkButton addTarget:self action:@selector(deleteButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [cell.editButton setImage:[UIImage imageNamed:@"edit.png"] forState:UIControlStateNormal];
+        
+        [cell.editButton addTarget:self action:@selector(editButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
         return cell;
     }
-    
 }
+
+-(void)deleteButtonPressed:(id)sender
+{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Are you sure you want to delete this event?" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
+    
+    [alertView show];
+}
+
+-(void)editButtonPressed:(id)sender
+{
+    EventCreateVC *eventCreateVC = [[EventCreateVC alloc]init];
+    
+    NSInteger index = [self.eventIndex integerValue];
+    
+    Event* this_event = [[[[EventManager sharedInstance] populatedEvents] allValues] objectAtIndex:index];
+    
+    eventCreateVC.editMode = YES;
+    
+    eventCreateVC.date = this_event.date;
+    
+    eventCreateVC.title = this_event.title;
+    
+    eventCreateVC.time = this_event.time;
+    
+    eventCreateVC.address = this_event.location;
+    
+    eventCreateVC.description = this_event.description;
+    
+    eventCreateVC.eventIndex = self.eventIndex;
+    
+    [self presentViewController:eventCreateVC animated:NO completion:nil];
+}
+
 
 -(void)yesButtonPressed:(UIButton*)yesButton{
     
@@ -288,15 +312,42 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    if (indexPath.row==0)
+    {
     [self dismissViewControllerAnimated:NO completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark-UIAlertView Delegate
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0)
+    {
+        [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    }
+    else
+    {
+        [alertView dismissWithClickedButtonIndex:1 animated:YES];
+        
+        NSInteger index = [self.eventIndex integerValue];
+        Event* this_event = [[[[EventManager sharedInstance] populatedEvents] allValues] objectAtIndex:index];
+        
+        [[EventManager sharedInstance] deleteEvent:this_event withCompletionHandler:^(NSError *error) {
+            
+            [self dismissViewControllerAnimated:NO completion:nil];
+        }];
+    }
 }
 
 @end

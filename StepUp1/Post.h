@@ -15,23 +15,23 @@ typedef NS_OPTIONS(NSUInteger, PostType) {
 };
 
 @interface Comment: NSObject
-@property NSString* commentId;
-@property NSDictionary* data;
+@property  (strong, nonatomic) NSString *commentId;
+@property  (strong, nonatomic) NSDictionary* data;
 
-- (id) initWithCommentId: (NSString*) commentID andData: (NSDictionary*) data;
+- (id) initWithCommentId:(NSString*) commentID andData:(NSDictionary*) data;
 
 @end
 
 @interface Post : NSObject
 
-@property NSString* postId;
+@property  (strong, nonatomic) NSString *postId;
 @property PostType type;
-@property NSString* title;
-@property NSString* text;
-@property NSDate* time;
-@property NSString* userId;
-@property NSString* eventId;
-@property NSMutableArray* comments;
+@property  (strong, nonatomic) NSString *title;
+@property  (strong, nonatomic) NSString *text;
+@property  (strong, nonatomic) NSDate *time;
+@property  (strong, nonatomic) NSString *userId;
+@property  (strong, nonatomic) NSString* eventId;
+@property  (strong, nonatomic) NSMutableArray* comments;
 
 - (id) initWithPostId: (NSString*) postId andType: (PostType) type andTitle: (NSString*) title andText: (NSString *) text andTime: (NSDate *) time andUserId: (NSString*) userId
            andEventId: (NSString*) eventId;

@@ -28,6 +28,6 @@
 - (void) addCommentToPost:(Post *) post andComment: (Comment *) comment;
 - (void) deleteCommentFromPost:(Post *) post andComment: (Comment *) comment;
 
-- (void) fetchAllPosts;
+- (void) fetchAllPostsWithCompletionHandler:(void (^) (NSMutableDictionary *dictionary))completonHandler;
 
 @end

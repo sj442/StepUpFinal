@@ -28,21 +28,33 @@ typedef NS_OPTIONS(NSUInteger, RSVPResponse) {
 
 @interface Event : NSObject
 
-@property NSString* eventId;
+@property  (nonatomic, strong) NSString* eventId;
 @property EventType type;
 @property EventStatus status;
-@property NSString* title;
-@property NSString* description;
-@property NSString* time;
-@property NSNumber* duration;
-@property NSString* url;
-@property NSString* location;
-@property NSDictionary* userResponse;
+@property  (strong, nonatomic) NSString *title;
+@property  (strong, nonatomic) NSString *description;
+@property  (strong, nonatomic) NSString *time;
+@property  (strong, nonatomic) NSString *date;
+@property  (strong, nonatomic) NSNumber *eventTimeStamp;
+@property  (strong, nonatomic) NSNumber *duration;
+@property  (strong, nonatomic) NSString *url;
+@property  (strong, nonatomic) NSString *location;
+@property  (strong, nonatomic) NSDictionary *userResponse;
 
-- (id) initWithEventId: (NSString*) eventId andType: (EventType) type andStatus: (EventStatus) status
+- (id) initWithEventId: (NSString*) eventId
+               andType: (EventType) type
+             andStatus: (EventStatus) status
               andTitle: (NSString*) title
-        andDescription: (NSString*) description andTime: (NSString*) time andDuration: (NSNumber*) duration
-                andUrl: (NSString*) url andLocation: (NSString*) location andUserResponse: (NSDictionary*) userResponse;
+        andDescription: (NSString*) description
+               andTime: (NSString*) time
+               andDate:(NSString*)  date
+     andEventTimeStamp:(NSNumber*)eventTimeStamp
+           andDuration: (NSNumber*) duration
+                andUrl: (NSString*) url
+           andLocation: (NSString*) location
+       andUserResponse: (NSDictionary*) userResponse;
+
+
 - (BOOL) validateEvent;
 
 - (NSMutableArray*) getAttendees;

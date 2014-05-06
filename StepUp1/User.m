@@ -21,7 +21,6 @@
         self.email = email;
         self.location = location;
     }
-    
     return self;
 }
 

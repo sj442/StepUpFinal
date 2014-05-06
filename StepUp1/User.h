@@ -16,11 +16,11 @@ typedef NS_OPTIONS(NSUInteger, UserType) {
 
 @interface User : NSObject
 
-@property NSString *userId;
-@property NSString *name;
+@property  (strong, nonatomic) NSString *userId;
+@property  (strong, nonatomic) NSString *name;
 @property UserType type;
-@property NSString *email;
-@property NSString *location;
+@property  (strong, nonatomic) NSString *email;
+@property  (strong, nonatomic) NSString *location;
 
 - (id) initWithUserId: (NSString*) userId andName: (NSString*) name andType: (UserType) type
              andEmail: (NSString*) email andLocation: (NSString*) location;

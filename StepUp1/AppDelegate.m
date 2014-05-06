@@ -16,6 +16,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
 //    CalendarListViewController *calendarListVC = [[CalendarListViewController alloc]initWithNibName:@"CalendarListVC" bundle:nil];
     
     loginViewController *loginVC = [[loginViewController alloc]init];

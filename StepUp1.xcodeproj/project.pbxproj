@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1607C357191926E3008BF027 /* chatDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C356191926E3008BF027 /* chatDetailViewController.m */; };
+		1632DBA218E21FDC00D876B9 /* EventCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1632DBA118E21FDC00D876B9 /* EventCreateVC.m */; };
 		165C892618A7AFF600018B79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892518A7AFF600018B79 /* Foundation.framework */; };
 		165C892818A7AFF600018B79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892718A7AFF600018B79 /* CoreGraphics.framework */; };
 		165C892A18A7AFF600018B79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892918A7AFF600018B79 /* UIKit.framework */; };
@@ -23,7 +25,7 @@
 		165C896818A7B02A00018B79 /* NewEventVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C895618A7B02A00018B79 /* NewEventVC.xib */; };
 		165C896918A7B02A00018B79 /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 165C895818A7B02A00018B79 /* NewEventViewController.m */; };
 		165C896A18A7B02A00018B79 /* EventCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 165C895A18A7B02A00018B79 /* EventCreateViewController.m */; };
-		165C896B18A7B02A00018B79 /* EventCreateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C895B18A7B02A00018B79 /* EventCreateVC.xib */; };
+		165C896B18A7B02A00018B79 /* EventCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C895B18A7B02A00018B79 /* EventCreateViewController.xib */; };
 		165C896C18A7B02A00018B79 /* EventDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 165C895D18A7B02A00018B79 /* EventDetailsCell.m */; };
 		165C896D18A7B02A00018B79 /* EventDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C895E18A7B02A00018B79 /* EventDetailsCell.xib */; };
 		165C896E18A7B02A00018B79 /* CalendarListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C895F18A7B02A00018B79 /* CalendarListVC.xib */; };
@@ -49,9 +51,11 @@
 		165C89A918A7FA0900018B79 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 165C89A718A7FA0900018B79 /* loginViewController.m */; };
 		165C89AB18A800CB00018B79 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 165C89AA18A800CB00018B79 /* iTunesArtwork@2x.png */; };
 		165C89AD18A8013400018B79 /* AppIcon60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 165C89AC18A8013400018B79 /* AppIcon60x60@2x.png */; };
+		1675E8FF1912CE870033B067 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1675E8FD1912CE870033B067 /* checkmark@2x.png */; };
+		1675E9001912CE870033B067 /* edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1675E8FE1912CE870033B067 /* edit@2x.png */; };
+		1675E9021912FAFE0033B067 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1675E9011912FAFE0033B067 /* trash.png */; };
 		1698058418B1B0CE0068A145 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1698058318B1B0CE0068A145 /* Firebase.framework */; };
 		1698058718B1B8A80068A145 /* chatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1698058618B1B8A80068A145 /* chatViewController.m */; };
-		1698058918B26ABE0068A145 /* chatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1698058818B26ABE0068A145 /* chatViewController.xib */; };
 		1698058B18B2770D0068A145 /* chatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1698058A18B2770D0068A145 /* chatCell.xib */; };
 		1698058E18B29ACE0068A145 /* chatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1698058D18B29ACE0068A145 /* chatCell.m */; };
 /* End PBXBuildFile section */
@@ -67,6 +71,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1607C355191926E3008BF027 /* chatDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatDetailViewController.h; sourceTree = "<group>"; };
+		1607C356191926E3008BF027 /* chatDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chatDetailViewController.m; sourceTree = "<group>"; };
+		1632DBA018E21FDC00D876B9 /* EventCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCreateVC.h; sourceTree = "<group>"; };
+		1632DBA118E21FDC00D876B9 /* EventCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCreateVC.m; sourceTree = "<group>"; };
 		165C892218A7AFF600018B79 /* StepUp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepUp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		165C892518A7AFF600018B79 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		165C892718A7AFF600018B79 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,7 +98,7 @@
 		165C895818A7B02A00018B79 /* NewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEventViewController.m; sourceTree = "<group>"; };
 		165C895918A7B02A00018B79 /* EventCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCreateViewController.h; sourceTree = "<group>"; };
 		165C895A18A7B02A00018B79 /* EventCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCreateViewController.m; sourceTree = "<group>"; };
-		165C895B18A7B02A00018B79 /* EventCreateVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCreateVC.xib; sourceTree = "<group>"; };
+		165C895B18A7B02A00018B79 /* EventCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCreateViewController.xib; sourceTree = "<group>"; };
 		165C895C18A7B02A00018B79 /* EventDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsCell.h; sourceTree = "<group>"; };
 		165C895D18A7B02A00018B79 /* EventDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsCell.m; sourceTree = "<group>"; };
 		165C895E18A7B02A00018B79 /* EventDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailsCell.xib; sourceTree = "<group>"; };
@@ -126,10 +134,12 @@
 		165C89A718A7FA0900018B79 /* loginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
 		165C89AA18A800CB00018B79 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		165C89AC18A8013400018B79 /* AppIcon60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@2x.png"; sourceTree = "<group>"; };
+		1675E8FD1912CE870033B067 /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
+		1675E8FE1912CE870033B067 /* edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit@2x.png"; sourceTree = "<group>"; };
+		1675E9011912FAFE0033B067 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
 		1698058318B1B0CE0068A145 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		1698058518B1B8A80068A145 /* chatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatViewController.h; sourceTree = "<group>"; };
 		1698058618B1B8A80068A145 /* chatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chatViewController.m; sourceTree = "<group>"; };
-		1698058818B26ABE0068A145 /* chatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = chatViewController.xib; sourceTree = "<group>"; };
 		1698058A18B2770D0068A145 /* chatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = chatCell.xib; sourceTree = "<group>"; };
 		1698058C18B29ACE0068A145 /* chatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatCell.h; sourceTree = "<group>"; };
 		1698058D18B29ACE0068A145 /* chatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chatCell.m; sourceTree = "<group>"; };
@@ -204,46 +214,15 @@
 		165C892B18A7AFF600018B79 /* StepUp1 */ = {
 			isa = PBXGroup;
 			children = (
+				1662E33218F5E95A0085BD62 /* TableviewCells */,
+				1662E33118F5E9390085BD62 /* ViewControllers */,
+				1662E33018F5E8FB0085BD62 /* Model Classes */,
+				1662E32F18F5E8DC0085BD62 /* xibs */,
+				1662E32E18F5E8B60085BD62 /* resources */,
 				165C893418A7AFF600018B79 /* AppDelegate.h */,
 				165C893518A7AFF600018B79 /* AppDelegate.m */,
-				165C895418A7B02A00018B79 /* CalendarListViewController.h */,
-				165C895518A7B02A00018B79 /* CalendarListViewController.m */,
-				165C895618A7B02A00018B79 /* NewEventVC.xib */,
-				165C895718A7B02A00018B79 /* NewEventViewController.h */,
-				165C895818A7B02A00018B79 /* NewEventViewController.m */,
-				165C895918A7B02A00018B79 /* EventCreateViewController.h */,
-				165C895A18A7B02A00018B79 /* EventCreateViewController.m */,
-				165C89A518A7FA0900018B79 /* login-background@2x.png */,
-				1698058518B1B8A80068A145 /* chatViewController.h */,
-				1698058618B1B8A80068A145 /* chatViewController.m */,
-				1698058818B26ABE0068A145 /* chatViewController.xib */,
-				1698058A18B2770D0068A145 /* chatCell.xib */,
-				1698058C18B29ACE0068A145 /* chatCell.h */,
-				1698058D18B29ACE0068A145 /* chatCell.m */,
-				165C89A618A7FA0900018B79 /* loginViewController.h */,
-				165C89A718A7FA0900018B79 /* loginViewController.m */,
-				165C895B18A7B02A00018B79 /* EventCreateVC.xib */,
-				165C895C18A7B02A00018B79 /* EventDetailsCell.h */,
 				165C899018A7BE4D00018B79 /* CommonClass.h */,
 				165C899118A7BE4D00018B79 /* CommonClass.m */,
-				165C895D18A7B02A00018B79 /* EventDetailsCell.m */,
-				165C895E18A7B02A00018B79 /* EventDetailsCell.xib */,
-				165C895F18A7B02A00018B79 /* CalendarListVC.xib */,
-				165C896018A7B02A00018B79 /* CalendarCell.h */,
-				165C89AC18A8013400018B79 /* AppIcon60x60@2x.png */,
-				165C896118A7B02A00018B79 /* CalendarCell.m */,
-				165C896218A7B02A00018B79 /* CalendarCell.xib */,
-				165C89AA18A800CB00018B79 /* iTunesArtwork@2x.png */,
-				165C896318A7B02A00018B79 /* venueBlack.png */,
-				165C896418A7B02A00018B79 /* venueGrey.png */,
-				165C896518A7B02A00018B79 /* clockBlack.png */,
-				165C896618A7B02A00018B79 /* clockGrey.png */,
-				165C899518A7E4A400018B79 /* EventManager.h */,
-				165C899618A7E4A400018B79 /* EventManager.m */,
-				165C899918A7E4A400018B79 /* PostManager.h */,
-				165C899A18A7E4A400018B79 /* PostManager.m */,
-				165C899D18A7E4A400018B79 /* UserManager.h */,
-				165C899E18A7E4A400018B79 /* UserManager.m */,
 				165C893718A7AFF600018B79 /* Images.xcassets */,
 				165C892C18A7AFF600018B79 /* Supporting Files */,
 			);
@@ -253,12 +232,6 @@
 		165C892C18A7AFF600018B79 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				165C899318A7E4A400018B79 /* Event.h */,
-				165C899418A7E4A400018B79 /* Event.m */,
-				165C899718A7E4A400018B79 /* Post.h */,
-				165C899818A7E4A400018B79 /* Post.m */,
-				165C899B18A7E4A400018B79 /* User.h */,
-				165C899C18A7E4A400018B79 /* User.m */,
 				165C892D18A7AFF600018B79 /* StepUp1-Info.plist */,
 				165C892E18A7AFF600018B79 /* InfoPlist.strings */,
 				165C893118A7AFF600018B79 /* main.m */,
@@ -283,6 +256,89 @@
 				165C894718A7AFF600018B79 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1662E32E18F5E8B60085BD62 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				165C89A518A7FA0900018B79 /* login-background@2x.png */,
+				165C89AC18A8013400018B79 /* AppIcon60x60@2x.png */,
+				165C89AA18A800CB00018B79 /* iTunesArtwork@2x.png */,
+				165C896318A7B02A00018B79 /* venueBlack.png */,
+				165C896418A7B02A00018B79 /* venueGrey.png */,
+				165C896518A7B02A00018B79 /* clockBlack.png */,
+				165C896618A7B02A00018B79 /* clockGrey.png */,
+				1675E8FD1912CE870033B067 /* checkmark@2x.png */,
+				1675E8FE1912CE870033B067 /* edit@2x.png */,
+				1675E9011912FAFE0033B067 /* trash.png */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
+		1662E32F18F5E8DC0085BD62 /* xibs */ = {
+			isa = PBXGroup;
+			children = (
+				165C896218A7B02A00018B79 /* CalendarCell.xib */,
+				165C895618A7B02A00018B79 /* NewEventVC.xib */,
+				1698058A18B2770D0068A145 /* chatCell.xib */,
+				165C895B18A7B02A00018B79 /* EventCreateViewController.xib */,
+				165C895E18A7B02A00018B79 /* EventDetailsCell.xib */,
+				165C895F18A7B02A00018B79 /* CalendarListVC.xib */,
+			);
+			name = xibs;
+			sourceTree = "<group>";
+		};
+		1662E33018F5E8FB0085BD62 /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				165C899318A7E4A400018B79 /* Event.h */,
+				165C899418A7E4A400018B79 /* Event.m */,
+				165C899718A7E4A400018B79 /* Post.h */,
+				165C899818A7E4A400018B79 /* Post.m */,
+				165C899B18A7E4A400018B79 /* User.h */,
+				165C899C18A7E4A400018B79 /* User.m */,
+				165C899518A7E4A400018B79 /* EventManager.h */,
+				165C899618A7E4A400018B79 /* EventManager.m */,
+				165C899918A7E4A400018B79 /* PostManager.h */,
+				165C899A18A7E4A400018B79 /* PostManager.m */,
+				165C899D18A7E4A400018B79 /* UserManager.h */,
+				165C899E18A7E4A400018B79 /* UserManager.m */,
+			);
+			name = "Model Classes";
+			sourceTree = "<group>";
+		};
+		1662E33118F5E9390085BD62 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				165C895418A7B02A00018B79 /* CalendarListViewController.h */,
+				165C895518A7B02A00018B79 /* CalendarListViewController.m */,
+				165C895718A7B02A00018B79 /* NewEventViewController.h */,
+				165C895818A7B02A00018B79 /* NewEventViewController.m */,
+				165C895918A7B02A00018B79 /* EventCreateViewController.h */,
+				165C895A18A7B02A00018B79 /* EventCreateViewController.m */,
+				1632DBA018E21FDC00D876B9 /* EventCreateVC.h */,
+				1632DBA118E21FDC00D876B9 /* EventCreateVC.m */,
+				1698058518B1B8A80068A145 /* chatViewController.h */,
+				1698058618B1B8A80068A145 /* chatViewController.m */,
+				1607C355191926E3008BF027 /* chatDetailViewController.h */,
+				1607C356191926E3008BF027 /* chatDetailViewController.m */,
+				165C89A618A7FA0900018B79 /* loginViewController.h */,
+				165C89A718A7FA0900018B79 /* loginViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1662E33218F5E95A0085BD62 /* TableviewCells */ = {
+			isa = PBXGroup;
+			children = (
+				1698058C18B29ACE0068A145 /* chatCell.h */,
+				1698058D18B29ACE0068A145 /* chatCell.m */,
+				165C895C18A7B02A00018B79 /* EventDetailsCell.h */,
+				165C895D18A7B02A00018B79 /* EventDetailsCell.m */,
+				165C896118A7B02A00018B79 /* CalendarCell.m */,
+				165C896018A7B02A00018B79 /* CalendarCell.h */,
+			);
+			name = TableviewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,15 +419,17 @@
 				165C897218A7B02A00018B79 /* venueGrey.png in Resources */,
 				165C896818A7B02A00018B79 /* NewEventVC.xib in Resources */,
 				165C89A818A7FA0900018B79 /* login-background@2x.png in Resources */,
+				1675E9021912FAFE0033B067 /* trash.png in Resources */,
 				165C897118A7B02A00018B79 /* venueBlack.png in Resources */,
-				165C896B18A7B02A00018B79 /* EventCreateVC.xib in Resources */,
+				165C896B18A7B02A00018B79 /* EventCreateViewController.xib in Resources */,
 				165C893018A7AFF600018B79 /* InfoPlist.strings in Resources */,
+				1675E8FF1912CE870033B067 /* checkmark@2x.png in Resources */,
 				165C897018A7B02A00018B79 /* CalendarCell.xib in Resources */,
 				165C897418A7B02A00018B79 /* clockGrey.png in Resources */,
 				165C897318A7B02A00018B79 /* clockBlack.png in Resources */,
 				165C896D18A7B02A00018B79 /* EventDetailsCell.xib in Resources */,
 				165C89AD18A8013400018B79 /* AppIcon60x60@2x.png in Resources */,
-				1698058918B26ABE0068A145 /* chatViewController.xib in Resources */,
+				1675E9001912CE870033B067 /* edit@2x.png in Resources */,
 				165C89AB18A800CB00018B79 /* iTunesArtwork@2x.png in Resources */,
 				1698058B18B2770D0068A145 /* chatCell.xib in Resources */,
 				165C896E18A7B02A00018B79 /* CalendarListVC.xib in Resources */,
@@ -401,6 +459,7 @@
 				165C896F18A7B02A00018B79 /* CalendarCell.m in Sources */,
 				165C899F18A7E4A400018B79 /* Event.m in Sources */,
 				165C89A018A7E4A400018B79 /* EventManager.m in Sources */,
+				1632DBA218E21FDC00D876B9 /* EventCreateVC.m in Sources */,
 				1698058E18B29ACE0068A145 /* chatCell.m in Sources */,
 				165C89A218A7E4A400018B79 /* PostManager.m in Sources */,
 				165C896A18A7B02A00018B79 /* EventCreateViewController.m in Sources */,
@@ -409,6 +468,7 @@
 				165C896918A7B02A00018B79 /* NewEventViewController.m in Sources */,
 				165C89A118A7E4A400018B79 /* Post.m in Sources */,
 				165C899218A7BE4D00018B79 /* CommonClass.m in Sources */,
+				1607C357191926E3008BF027 /* chatDetailViewController.m in Sources */,
 				1698058718B1B8A80068A145 /* chatViewController.m in Sources */,
 				165C896718A7B02A00018B79 /* CalendarListViewController.m in Sources */,
 			);

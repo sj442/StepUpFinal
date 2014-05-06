@@ -38,7 +38,7 @@
 
 -(UIColor*)extraLightOrangeColor{
     
-    UIColor *lighOrangeColor = [UIColor colorWithRed:248.0/255.0 green:165.0/255.0 blue:66.0/255.0 alpha:1];
+    UIColor *lighOrangeColor = [UIColor colorWithRed:248.0/255.0 green:165.0/255.0 blue:66.0/255.0 alpha:0.5];
     
     return lighOrangeColor;
 }

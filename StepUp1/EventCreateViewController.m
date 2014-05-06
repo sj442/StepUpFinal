@@ -563,18 +563,17 @@
     
     [self newDateFromDateAndTimeChosen];
     //NSString* time_str = [self.eventDate descriptionWithCalendarFormat:@"%Y-%m-%d %H:%M:%S %z" timeZone:[NSTimeZone timeZoneWithAbbreviation:@"EST"] locale:nil];
-    NSString* time_str = [self.eventDate description];
+    //NSString* time_str = [self.eventDate description];
     
-    Event *newEvent = [[Event alloc]initWithEventId:@"" andType:EVENT_NETWORKING andStatus:EVENT_SCHEDULED andTitle:self.eventName andDescription:self.eventDetails andTime:time_str andDuration:[[NSNumber alloc] initWithInt:1] andUrl:@"" andLocation:self.address andUserResponse:@{}];
-    
-    NSLog(@"New Event Created with title as %@", [newEvent title]);
-    
-      [[EventManager sharedInstance] addNewEvent:newEvent];
-    
-    NSLog(@"PuttonPressed to save a new event: trying to dismiss now");
-
-    [self dismissViewControllerAnimated:NO completion:nil];
-    
+//    Event *newEvent = [[Event alloc]initWithEventId:@"" andType:EVENT_NETWORKING andStatus:EVENT_SCHEDULED andTitle:self.eventName andDescription:self.eventDetails andTime:time_str andDuration:[[NSNumber alloc] initWithInt:1] andUrl:@"" andLocation:self.address andUserResponse:@{}];
+//    
+//    NSLog(@"New Event Created with title as %@", [newEvent title]);
+//    
+//      [[EventManager sharedInstance] addNewEvent:newEvent withcompletionHandler:^(NSError *error) {
+//          NSLog(@"Button Pressed to save a new event: trying to dismiss now");
+//          
+//          [self dismissViewControllerAnimated:NO completion:nil];
+//      }];
 }
 
 -(void)cancelButtonPressed:(id)sender{

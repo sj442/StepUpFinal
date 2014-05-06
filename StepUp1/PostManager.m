@@ -20,7 +20,6 @@
         sharedInstance = [[self alloc] init];
         sharedInstance.firebase = [[Firebase alloc] initWithUrl:kFireBaseStepupPostsPath];
         sharedInstance.populatedPosts = [[NSMutableDictionary alloc] init];
-        [sharedInstance fetchAllPosts];
     });
     
     return sharedInstance;
@@ -34,15 +33,23 @@
     
     NSNumber *postType = [[NSNumber alloc] initWithUnsignedInteger:[post type]];
     
+    NSDate *postDate = [post time];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"MM/dd"];
+    
+    NSString *postTimeString = [formatter stringFromDate:postDate];
+    
     [post setPostId:[newPostRef name]];
     
-    [newPostRef setValue:@{@"time": [post time],
+    [newPostRef setValue:@{@"time": postTimeString,
                            @"type": postType,
                            @"title": [post title],
                            @"text": [post text],
                            @"userId": [post userId],
                            @"eventId": [post eventId],
-                           @"comments": [post comments]}
+                          }
      withCompletionBlock:^(NSError *error, Firebase *ref) {
           if (error) {
               // TODO: Generate a callback to listeners to alert about this
@@ -102,7 +109,8 @@
     }];
 }
 
-- (void) fetchAllPosts {
+- (void) fetchAllPostsWithCompletionHandler:(void (^) (NSMutableDictionary *dictionary))completonHandler
+{
     Firebase *fb = [[PostManager sharedInstance] firebase];
     
     [fb observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
@@ -119,7 +127,9 @@
             [my_post setComments:comments];
             [[[PostManager sharedInstance] populatedPosts] setObject:my_post forKey:postId];
         }
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completonHandler([[PostManager sharedInstance] populatedPosts]);
+        });
     }];
     
     [fb observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
@@ -127,7 +137,6 @@
             NSString* postId = snapshot.name;
             [[[PostManager sharedInstance] populatedPosts] removeObjectForKey:postId];
         }
-        
     }];
     
     [fb observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
