@@ -8,24 +8,26 @@
 
 #import "chatDetailViewController.h"
 #import "CommonClass.h"
-#import "chatCell.h"
 
 @interface chatDetailViewController ()
+
+@property (strong, nonatomic) UITableView *tableView;
+
+@property (strong, nonatomic) UITextView *questionView;
+
+@property (strong, nonatomic) UITextField *chatTextField;
+
+@property (strong, nonatomic) UIView *chatView;
 
 @end
 
 @implementation chatDetailViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
-        CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-        
-        self.tableView.frame = CGRectMake(0, statusBarHeight, self.view.frame.size.width, self.view.frame.size.height-statusBarHeight);
-
     }
     return self;
 }
@@ -34,16 +36,69 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [[CommonClass sharedCommonClass] darkOrangeColor];
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
     
-    self.view.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
+    self.questionView = [[UITextView alloc]initWithFrame:CGRectMake(0, statusBarHeight, self.view.frame.size.width,130)];
     
-    self.tableView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
+    self.questionView.backgroundColor = [[CommonClass sharedCommonClass] darkOrangeColor];
     
-    UINib *nib = [UINib nibWithNibName:@"chatCell" bundle:[NSBundle mainBundle]];
+    self.questionView.textColor = [UIColor whiteColor];
     
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"chatCell"];
+    self.questionView.font = [UIFont fontWithName:@"Futura" size:15];
+
+    self.questionView.text = [NSString stringWithFormat:@"%@:%@", self.post.title, self.post.text];
+    
+    [self.view addSubview:self.questionView];
+    
+    self.questionView.userInteractionEnabled = NO;
+    
+    self.chatView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-70, self.view.frame.size.width, 70)];
+    
+    [self.view addSubview:self.chatView];
+    
+    self.chatView.backgroundColor = [UIColor colorWithRed:0.992f green:0.929f blue:0.851f alpha:0.95f];
+    
+    self.chatTextField = [[UITextField alloc] initWithFrame:CGRectMake(5, 10, 230, 50)];
+    
+    self.chatTextField.backgroundColor = [UIColor clearColor];
+    
+    self.chatTextField.placeholder = @"Type a message...";
+    
+    [self.chatView addSubview:self.chatTextField];
+    
+    UIButton *sendButton = [[UIButton alloc]initWithFrame:CGRectMake(240, 10, 75, 50)];
+    
+    [sendButton setTitle:@"Send" forState:UIControlStateNormal];
+    
+    sendButton.titleLabel.font = [UIFont fontWithName:@"Futura" size:17];
+    
+    [sendButton setTitleColor:[[CommonClass sharedCommonClass] darkOrangeColor] forState:UIControlStateNormal];
+    
+    [sendButton addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+
+    sendButton.layer.borderWidth = 3.0f;
+    
+    sendButton.layer.borderColor = [[CommonClass sharedCommonClass] darkOrangeColor].CGColor;
+    
+    [self.chatView addSubview:sendButton];
+    
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, statusBarHeight+self.questionView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-statusBarHeight-self.questionView.frame.size.height-self.chatView.frame.size.height) style:UITableViewStylePlain];
+    
+    self.tableView.dataSource = self;
+    
+    self.tableView.delegate = self;
+    
+    [self.view addSubview:self.tableView];
+
+    // Do any additional setup after loading the view.
+}
+
+-(void)sendButtonPressed:(id)sender
+{
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,98 +107,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark-UITableView DataSource methods
 
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 2;
+    return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    chatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatCell"];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    cell.contentView.backgroundColor = [UIColor whiteColor];
     
     if (!cell)
     {
-        cell = [[chatCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chatCell"];
-    }
-    
-    cell.contentView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
-    
-    cell.questionTextView.textColor = [UIColor whiteColor];
-    
-    cell.questionTextView.backgroundColor = [UIColor clearColor];
-    
-    cell.questionTextView.userInteractionEnabled = NO;
-    
-    cell.questionTextView.font = [UIFont fontWithName:@"Futura" size:15];
-    
-    if (indexPath.row==0)
-    {
-        cell.questionTextView.text = [NSString stringWithFormat:@"%@:%@", self.post.title, self.post.text];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     return cell;
 }
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row==0)
-    {
-        return 130;
-    }
-    else
-    {
-        return self.tableView.frame.size.height-130;
-    }
-}
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

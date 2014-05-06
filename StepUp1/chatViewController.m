@@ -38,6 +38,8 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
+    
     CGFloat statusBarHeight =[UIApplication sharedApplication].statusBarFrame.size.height;
     
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,statusBarHeight, self.view.frame.size.width, self.view.frame.size.height-statusBarHeight) style:UITableViewStylePlain];
@@ -49,9 +51,7 @@
     self.tableView.hidden = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
-    
-    self.view.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
-    
+        
     UINib *nib = [UINib nibWithNibName:@"chatCell" bundle:nil];
     
     [self.tableView registerNib:nib forCellReuseIdentifier:@"chatCell"];

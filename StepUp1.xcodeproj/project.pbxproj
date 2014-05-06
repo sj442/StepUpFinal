@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1607C357191926E3008BF027 /* chatDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C356191926E3008BF027 /* chatDetailViewController.m */; };
+		1607C35A1919310A008BF027 /* chatDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C3591919310A008BF027 /* chatDetailViewController.m */; };
 		1632DBA218E21FDC00D876B9 /* EventCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1632DBA118E21FDC00D876B9 /* EventCreateVC.m */; };
 		165C892618A7AFF600018B79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892518A7AFF600018B79 /* Foundation.framework */; };
 		165C892818A7AFF600018B79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892718A7AFF600018B79 /* CoreGraphics.framework */; };
@@ -71,8 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1607C355191926E3008BF027 /* chatDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatDetailViewController.h; sourceTree = "<group>"; };
-		1607C356191926E3008BF027 /* chatDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chatDetailViewController.m; sourceTree = "<group>"; };
+		1607C3581919310A008BF027 /* chatDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatDetailViewController.h; sourceTree = "<group>"; };
+		1607C3591919310A008BF027 /* chatDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chatDetailViewController.m; sourceTree = "<group>"; };
 		1632DBA018E21FDC00D876B9 /* EventCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCreateVC.h; sourceTree = "<group>"; };
 		1632DBA118E21FDC00D876B9 /* EventCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCreateVC.m; sourceTree = "<group>"; };
 		165C892218A7AFF600018B79 /* StepUp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepUp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,8 +320,8 @@
 				1632DBA118E21FDC00D876B9 /* EventCreateVC.m */,
 				1698058518B1B8A80068A145 /* chatViewController.h */,
 				1698058618B1B8A80068A145 /* chatViewController.m */,
-				1607C355191926E3008BF027 /* chatDetailViewController.h */,
-				1607C356191926E3008BF027 /* chatDetailViewController.m */,
+				1607C3581919310A008BF027 /* chatDetailViewController.h */,
+				1607C3591919310A008BF027 /* chatDetailViewController.m */,
 				165C89A618A7FA0900018B79 /* loginViewController.h */,
 				165C89A718A7FA0900018B79 /* loginViewController.m */,
 			);
@@ -468,7 +468,7 @@
 				165C896918A7B02A00018B79 /* NewEventViewController.m in Sources */,
 				165C89A118A7E4A400018B79 /* Post.m in Sources */,
 				165C899218A7BE4D00018B79 /* CommonClass.m in Sources */,
-				1607C357191926E3008BF027 /* chatDetailViewController.m in Sources */,
+				1607C35A1919310A008BF027 /* chatDetailViewController.m in Sources */,
 				1698058718B1B8A80068A145 /* chatViewController.m in Sources */,
 				165C896718A7B02A00018B79 /* CalendarListViewController.m in Sources */,
 			);

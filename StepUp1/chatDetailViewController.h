@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Post.h"
 
-@interface chatDetailViewController : UITableViewController
+
+@interface chatDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) Post *post;
 
