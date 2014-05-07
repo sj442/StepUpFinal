@@ -4,7 +4,6 @@
 //
 //  Created by Sunayna Jain on 5/6/14.
 //  Copyright (c) 2014 LittleAuk. All rights reserved.
-//
 
 #import "CommentManager.h"
 
@@ -24,7 +23,7 @@
     return sharedInstance;
 }
 
--(BOOL)addNewComment:(Comment*) comment toPost:(Post*)post
+-(BOOL)addNewComment:(Comment*) comment toPost:(Post*)post withCompletionHandler:(void(^)(NSMutableDictionary *dictionary))completionHandler
 {
     Firebase *fb = [[CommentManager sharedInstance] firebase];
     Firebase *newCommentRef = [fb childByAutoId];
@@ -34,14 +33,17 @@
     [newCommentRef setValue:@{} withCompletionBlock:^(NSError *error, Firebase *ref) {
         //completion block
     }];
-    
     return YES;
 }
 
--(BOOL)deletecomment:(Comment *)comment fromPost:(Post *)post
+-(BOOL)deletecomment:(Comment *)comment fromPost:(Post *)post withCompletionHandler:(void (^) (NSMutableDictionary *dictionary))completionHandler
 {
     return YES;
 }
 
+-(BOOL)fetchAllCommentsWithPostID:(NSString*) postID withcompletionhandler:(void (^) (NSMutableDictionary *dictionary))completonHandler
+{
+    return YES;
+}
 
 @end

@@ -8,9 +8,10 @@
 
 #import "loginViewController.h"
 #import "CommonClass.h"
-#import "CalendarListViewController.h"
+#import "CalendarListVC.h"
 #import "EventManager.h"
 #import "chatViewController.h"
+#import "chatVC.h"
 
 @interface loginViewController ()
 
@@ -78,13 +79,19 @@
 
 -(void)sendButtonPressed:(id)sender{
     
-    CalendarListViewController *calendarListVC = [[CalendarListViewController alloc]initWithNibName:@"CalendarListVC" bundle:nil];
-    
-    [self presentViewController:calendarListVC animated:YES completion:nil];
+//    CalendarListViewController *calendarListVC = [[CalendarListViewController alloc]initWithNibName:@"CalendarListVC" bundle:nil];
+//    
+//    [self presentViewController:calendarListVC animated:YES completion:nil];
     
 //    chatViewController *chatVC = [[chatViewController alloc]init];
 //    
 //    [self presentViewController:chatVC animated:YES completion:nil];
+    
+    CalendarListVC *calendarList = [[CalendarListVC alloc]init];
+    
+  //  chatVC *vc = [[chatVC alloc]init];
+    
+    [self presentViewController:calendarList animated:NO completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

@@ -11,6 +11,11 @@
 		1607C35D19196D27008BF027 /* postCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C35C19196D27008BF027 /* postCell.m */; };
 		1607C35F19196D4D008BF027 /* postCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1607C35E19196D4D008BF027 /* postCell.xib */; };
 		1607C36219197E64008BF027 /* CommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C36119197E64008BF027 /* CommentManager.m */; };
+		1607C365191A76FB008BF027 /* chatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C364191A76FB008BF027 /* chatVC.m */; };
+		1607C36B191A92CD008BF027 /* chatIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1607C36A191A92CD008BF027 /* chatIcon@2x.png */; };
+		1607C36E191A9E3B008BF027 /* CalendarListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C36D191A9E3B008BF027 /* CalendarListVC.m */; };
+		1607C371191AA921008BF027 /* AdminPostCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C370191AA921008BF027 /* AdminPostCreate.m */; };
+		1607C374191AA933008BF027 /* MenteePostCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C373191AA933008BF027 /* MenteePostCreate.m */; };
 		1632DBA218E21FDC00D876B9 /* EventCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1632DBA118E21FDC00D876B9 /* EventCreateVC.m */; };
 		165C892618A7AFF600018B79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892518A7AFF600018B79 /* Foundation.framework */; };
 		165C892818A7AFF600018B79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892718A7AFF600018B79 /* CoreGraphics.framework */; };
@@ -81,6 +86,15 @@
 		1607C35E19196D4D008BF027 /* postCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = postCell.xib; sourceTree = "<group>"; };
 		1607C36019197E64008BF027 /* CommentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentManager.h; sourceTree = "<group>"; };
 		1607C36119197E64008BF027 /* CommentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentManager.m; sourceTree = "<group>"; };
+		1607C363191A76FB008BF027 /* chatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatVC.h; sourceTree = "<group>"; };
+		1607C364191A76FB008BF027 /* chatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chatVC.m; sourceTree = "<group>"; };
+		1607C36A191A92CD008BF027 /* chatIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatIcon@2x.png"; sourceTree = "<group>"; };
+		1607C36C191A9E3B008BF027 /* CalendarListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarListVC.h; sourceTree = "<group>"; };
+		1607C36D191A9E3B008BF027 /* CalendarListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarListVC.m; sourceTree = "<group>"; };
+		1607C36F191AA921008BF027 /* AdminPostCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminPostCreate.h; sourceTree = "<group>"; };
+		1607C370191AA921008BF027 /* AdminPostCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminPostCreate.m; sourceTree = "<group>"; };
+		1607C372191AA933008BF027 /* MenteePostCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenteePostCreate.h; sourceTree = "<group>"; };
+		1607C373191AA933008BF027 /* MenteePostCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenteePostCreate.m; sourceTree = "<group>"; };
 		1632DBA018E21FDC00D876B9 /* EventCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCreateVC.h; sourceTree = "<group>"; };
 		1632DBA118E21FDC00D876B9 /* EventCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCreateVC.m; sourceTree = "<group>"; };
 		165C892218A7AFF600018B79 /* StepUp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepUp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +292,7 @@
 				165C896618A7B02A00018B79 /* clockGrey.png */,
 				1675E8FD1912CE870033B067 /* checkmark@2x.png */,
 				1675E8FE1912CE870033B067 /* edit@2x.png */,
+				1607C36A191A92CD008BF027 /* chatIcon@2x.png */,
 				1675E9011912FAFE0033B067 /* trash.png */,
 			);
 			name = resources;
@@ -323,6 +338,8 @@
 			children = (
 				165C895418A7B02A00018B79 /* CalendarListViewController.h */,
 				165C895518A7B02A00018B79 /* CalendarListViewController.m */,
+				1607C36C191A9E3B008BF027 /* CalendarListVC.h */,
+				1607C36D191A9E3B008BF027 /* CalendarListVC.m */,
 				165C895718A7B02A00018B79 /* NewEventViewController.h */,
 				165C895818A7B02A00018B79 /* NewEventViewController.m */,
 				165C895918A7B02A00018B79 /* EventCreateViewController.h */,
@@ -335,6 +352,12 @@
 				1607C3591919310A008BF027 /* chatDetailViewController.m */,
 				165C89A618A7FA0900018B79 /* loginViewController.h */,
 				165C89A718A7FA0900018B79 /* loginViewController.m */,
+				1607C363191A76FB008BF027 /* chatVC.h */,
+				1607C364191A76FB008BF027 /* chatVC.m */,
+				1607C36F191AA921008BF027 /* AdminPostCreate.h */,
+				1607C370191AA921008BF027 /* AdminPostCreate.m */,
+				1607C372191AA933008BF027 /* MenteePostCreate.h */,
+				1607C373191AA933008BF027 /* MenteePostCreate.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -439,6 +462,7 @@
 				165C893018A7AFF600018B79 /* InfoPlist.strings in Resources */,
 				1675E8FF1912CE870033B067 /* checkmark@2x.png in Resources */,
 				165C897018A7B02A00018B79 /* CalendarCell.xib in Resources */,
+				1607C36B191A92CD008BF027 /* chatIcon@2x.png in Resources */,
 				165C897418A7B02A00018B79 /* clockGrey.png in Resources */,
 				165C897318A7B02A00018B79 /* clockBlack.png in Resources */,
 				165C896D18A7B02A00018B79 /* EventDetailsCell.xib in Resources */,
@@ -472,21 +496,25 @@
 				165C893218A7AFF600018B79 /* main.m in Sources */,
 				165C896F18A7B02A00018B79 /* CalendarCell.m in Sources */,
 				165C899F18A7E4A400018B79 /* Event.m in Sources */,
+				1607C374191AA933008BF027 /* MenteePostCreate.m in Sources */,
 				165C89A018A7E4A400018B79 /* EventManager.m in Sources */,
 				1632DBA218E21FDC00D876B9 /* EventCreateVC.m in Sources */,
 				1698058E18B29ACE0068A145 /* chatCell.m in Sources */,
 				165C89A218A7E4A400018B79 /* PostManager.m in Sources */,
 				165C896A18A7B02A00018B79 /* EventCreateViewController.m in Sources */,
+				1607C36E191A9E3B008BF027 /* CalendarListVC.m in Sources */,
 				1607C35D19196D27008BF027 /* postCell.m in Sources */,
 				165C89A418A7E4A400018B79 /* UserManager.m in Sources */,
 				165C896C18A7B02A00018B79 /* EventDetailsCell.m in Sources */,
 				165C896918A7B02A00018B79 /* NewEventViewController.m in Sources */,
 				165C89A118A7E4A400018B79 /* Post.m in Sources */,
+				1607C365191A76FB008BF027 /* chatVC.m in Sources */,
 				1607C36219197E64008BF027 /* CommentManager.m in Sources */,
 				165C899218A7BE4D00018B79 /* CommonClass.m in Sources */,
 				1607C35A1919310A008BF027 /* chatDetailViewController.m in Sources */,
 				1698058718B1B8A80068A145 /* chatViewController.m in Sources */,
 				165C896718A7B02A00018B79 /* CalendarListViewController.m in Sources */,
+				1607C371191AA921008BF027 /* AdminPostCreate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

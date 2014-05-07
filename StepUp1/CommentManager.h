@@ -17,8 +17,11 @@
 
 + (CommentManager *) sharedInstance;
 
--(BOOL)addNewComment:(Comment*) comment toPost:(Post*)post;
+-(BOOL)addNewComment:(Comment*) comment toPost:(Post*)post withCompletionHandler:(void(^)(NSMutableDictionary *dictionary))completionHandler;
 
--(BOOL)deletecomment:(Comment*) comment fromPost:(Post*)post;
+-(BOOL)deletecomment:(Comment *)comment fromPost:(Post *)post withCompletionHandler:(void (^) (NSMutableDictionary *dictionary))completionHandler;
+
+-(BOOL)fetchAllCommentsWithPostID:(NSString*) postID withcompletionhandler:(void (^) (NSMutableDictionary *dictionary))completonHandler;
+
 
 @end

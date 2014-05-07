@@ -3,8 +3,6 @@
 //  StepUp
 //
 //  Created by Sunayna Jain on 2/8/14.
-//
-//
 
 #import "CalendarListViewController.h"
 #import "CalendarCell.h"
