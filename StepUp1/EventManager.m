@@ -123,7 +123,9 @@
     
     Post *newPost = [[Post alloc]initWithPostId:@"" andType:0 andTitle:postTitle andText: postText andTime:[NSDate date] andUserId:@"" andEventId:[event eventId]];
     
-    [[PostManager sharedInstance] addNewPost:newPost];
+    [[PostManager sharedInstance] addNewPost:newPost withcompletionHandler:^(NSError *error) {
+        //later
+    }];
     
    return true;
 }
@@ -145,7 +147,9 @@
             
             Post *newPost = [[Post alloc]initWithPostId:@"" andType:0 andTitle:postTitle andText: postText andTime:[NSDate date] andUserId:@"" andEventId:[event eventId]];
             
-            [[PostManager sharedInstance] addNewPost:newPost];
+            [[PostManager sharedInstance] addNewPost:newPost withcompletionHandler:^(NSError *error) {
+                //later
+            }];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             completionHandler(error);

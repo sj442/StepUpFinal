@@ -22,8 +22,10 @@
 @property (nonatomic, strong) Firebase* firebase;
 @property NSMutableDictionary* populatedPosts;
 
-- (void) addNewPost:(Post *) post;
-- (void) deletePost:(Post *) post;
+- (void) addNewPost:(Post *) post withcompletionHandler:(void (^)(NSError *error))completionHandler;
+
+- (void) deletePost:(Post *) post withcompletionHandler:(void (^)(NSError *error))completionHandler;
+
 
 - (void) addCommentToPost:(Post *) post andComment: (Comment *) comment;
 - (void) deleteCommentFromPost:(Post *) post andComment: (Comment *) comment;

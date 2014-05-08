@@ -24,6 +24,8 @@
 
 @implementation CalendarListVC
 
+@synthesize myDelegate;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,6 +45,8 @@
     
     headerView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
     
+    if (!self.fromAdminPost)
+    {
     UIButton *postsButton = [[UIButton alloc]initWithFrame:CGRectMake(5, 45, 36, 36)];
     
     [postsButton setBackgroundImage:[UIImage imageNamed:@"chatIcon.png"] forState:UIControlStateNormal];
@@ -50,7 +54,7 @@
     [postsButton addTarget:self action:@selector(postsButtonPressed:)  forControlEvents:UIControlEventTouchUpInside];
     
     [headerView addSubview:postsButton];
-    
+    }
     UIButton *eventsButton = [[UIButton alloc]initWithFrame:CGRectMake(51, 30, 180, 63)];
     
     [eventsButton setBackgroundColor:[[CommonClass sharedCommonClass] darkOrangeColor]];
@@ -237,6 +241,15 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (self.fromAdminPost)
+    {
+        Event* this_event = [[[[EventManager sharedInstance] populatedEvents] allValues] objectAtIndex:indexPath.row];
+        
+        [self.myDelegate eventPassedBackFromEventList: this_event];
+        
+        [self dismissMe];
+    }
+    
     NewEventViewController *newEventVC = [[NewEventViewController alloc]initWithNibName:@"NewEventVC" bundle:nil];
     
     newEventVC.eventIndex = [[NSNumber alloc]initWithInteger:indexPath.row];
@@ -264,7 +277,8 @@
     [self presentViewController:controller animated:NO completion:nil];
 }
 
--(void) dismissMe {
+-(void) dismissMe
+{
     CATransition *transition = [CATransition animation];
     transition.duration = 0.35;
     transition.timingFunction =

@@ -24,7 +24,8 @@
     return sharedInstance;
 }
 
-- (void) addNewPost:(Post *) post {
+- (void) addNewPost:(Post *) post withcompletionHandler:(void (^)(NSError *error))completionHandler
+{
     // add a new post to the firebase database and assign the generated id
     // as the post id
     Firebase *fb = [[PostManager sharedInstance] firebase];
@@ -42,33 +43,38 @@
     
     [post setPostId:[newPostRef name]];
     
-    Comment *nullComment = [[Comment alloc]initWithCommentId:@"" andUser:@"" andCommentText:@"No Comments yet" andTimeStamp:[NSNumber numberWithInt:0]];
+   // Comment *nullComment = [[Comment alloc]initWithCommentId:@"" andUser:@"" andCommentText:@"No Comments yet" andTimeStamp:[NSNumber numberWithInt:0]];
     
-    [post.comments addObject:nullComment];
+   // [post.comments addObject:nullComment];
     
     [newPostRef setValue:@{@"time": postTimeString,
                            @"type": postType,
                            @"title": [post title],
                            @"text": [post text],
                            @"userId": [post userId],
-                           @"eventId": [post eventId],
-                           @"comments": [post comments]
+                           @"eventId": [post eventId]
                           }
      withCompletionBlock:^(NSError *error, Firebase *ref) {
           if (error) {
               // TODO: Generate a callback to listeners to alert about this
               NSLog(@"PostManager::addNewPost ALERT! Post addition failed %@", [post title]);
-          } else {
+          } else
+          {
               // TODO: Generate a post here announcing the addition
               // TODO: Check if adding this event generates a callback from firebase immediately
               // otherwise we'll have to add event ourself to show it to user -- shouldn't be required.
               
               NSLog(@"PostManager::addNewPost Post was added successfully %@", [post title]);
           }
-      }
-     ];
+         dispatch_async(dispatch_get_main_queue(), ^{
+             completionHandler(error);
+         });
+     }];
 }
-- (void) deletePost:(Post *) post {
+
+
+- (void) deletePost:(Post *) post withcompletionHandler:(void (^)(NSError *))completionHandler
+{
     Firebase *fb = [[PostManager sharedInstance] firebase];
     Firebase *newPostRef = [fb childByAppendingPath:[post postId]];
     [newPostRef removeValueWithCompletionBlock:^(NSError *error, Firebase *ref) {
@@ -78,6 +84,9 @@
             // TODO: Generate a post here announcing the deletion
             NSLog(@"PostManager::deletePost Post deleted successfully");
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandler(error);
+        });
     }];
 }
 
@@ -127,9 +136,9 @@
             NSString* userId = snapshot.value[@"userId"];
             NSString* eventId = snapshot.value[@"eventId"];
             NSString* postId = snapshot.name;
-            NSMutableArray* comments = snapshot.value[@"comments"];
+          //  NSMutableArray* comments = snapshot.value[@"comments"];
             Post* my_post = [[Post alloc] initWithPostId:postId andType:type andTitle: title andText: text andTime: time andUserId: userId andEventId: eventId];
-            [my_post setComments:comments];
+           // [my_post setComments:comments];
             [[[PostManager sharedInstance] populatedPosts] setObject:my_post forKey:postId];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -153,9 +162,9 @@
             NSString* userId = snapshot.value[@"userId"];
             NSString* eventId = snapshot.value[@"eventId"];
             NSString* postId = snapshot.name;
-            NSMutableArray* comments = snapshot.value[@"comments"];
+           // NSMutableArray* comments = snapshot.value[@"comments"];
             Post* my_post = [[Post alloc] initWithPostId:postId andType:type andTitle: title andText: text andTime: time andUserId: userId andEventId: eventId];
-            [my_post setComments:comments];
+           // [my_post setComments:comments];
             [[[PostManager sharedInstance] populatedPosts] setObject:my_post forKey:postId];
         }
     }];

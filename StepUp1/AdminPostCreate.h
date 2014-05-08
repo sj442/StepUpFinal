@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
+#import "CalendarListVC.h"
 
-@interface AdminPostCreate : UIViewController
+
+@interface AdminPostCreate : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, eventSelectDelegate>
+
+@property (strong, nonatomic) Event *eventSelected;
 
 @end

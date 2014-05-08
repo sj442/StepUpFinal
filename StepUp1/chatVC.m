@@ -222,7 +222,9 @@
 
 -(void)plusButtonPressed:(id)sender
 {
-    MenteePostCreate *postCreate = [[MenteePostCreate alloc]init];
+    //MenteePostCreate *postCreate = [[MenteePostCreate alloc]init];
+    
+    AdminPostCreate *postCreate = [[AdminPostCreate alloc]init];
     
     [self presentViewController:postCreate animated:NO completion:nil];
 }

@@ -118,14 +118,22 @@
     
     if (indexPath.row==0)
         {
+            UITextView *postTextView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height-140)];
             
+            postTextView.backgroundColor = [UIColor colorWithRed:0.992f green:0.929f blue:0.851f alpha:0.95f];
+            
+            postTextView.contentInset = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+
+            [cell.contentView addSubview:postTextView];
         }
     
     else if (indexPath.row==1)
     {
-        cell.textLabel.text = @"post as anonymous";
+        cell.textLabel.text = @"Post as anonymous";
         
-        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.textLabel.textColor = [UIColor blackColor];
+        
+        cell.textLabel.font = [UIFont fontWithName:@"Futura" size:17];
         
         UISwitch *anonymousSwitch = [[UISwitch alloc]init];
         
@@ -171,18 +179,17 @@
         
         [cell.contentView addSubview:cancelButton];
     }
-    
     return cell;
 }
 
 -(void)cancelButtonPressed:(id)sender
 {
-    
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 -(void)saveButtonPressed:(id)sender
 {
-    
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -190,6 +197,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

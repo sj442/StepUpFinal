@@ -11,8 +11,8 @@
 
 typedef NS_OPTIONS(NSUInteger, PostType) {
     POST_EVENTUPDATE = 0,
-    POST_ANNOUNCEMENT = 1 << 0,
-    POST_QUESTION = 1 << 1
+    POST_QUESTIONS = 1 << 0,
+    POST_ANNOUNCEMENT = 1 << 1,
 };
 
 @interface Comment: NSObject

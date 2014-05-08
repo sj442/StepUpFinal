@@ -7,9 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
+
+@protocol eventSelectDelegate <NSObject>
+
+-(void)eventPassedBackFromEventList:(Event*) event;
+
+@end
 
 @interface CalendarListVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
+
+@property (weak, nonatomic) id<eventSelectDelegate> myDelegate;
+
+@property BOOL fromAdminPost;
 
 @end
