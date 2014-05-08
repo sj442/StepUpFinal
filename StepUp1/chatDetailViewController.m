@@ -21,7 +21,7 @@
 
 @property (strong, nonatomic) UITextView *questionView;
 
-@property (strong, nonatomic) UITextField *chatTextField;
+@property (strong, nonatomic) UITextView *chatTextView;
 
 @property (strong, nonatomic) UIView *chatView;
 
@@ -83,15 +83,15 @@
     
     self.chatView.backgroundColor = [UIColor colorWithRed:0.992f green:0.929f blue:0.851f alpha:0.95f];
     
-    self.chatTextField = [[UITextField alloc] initWithFrame:CGRectMake(5, 10, 230, 50)];
+    self.chatTextView = [[UITextView alloc] initWithFrame:CGRectMake(5, 10, 230, 50)];
     
-    self.chatTextField.backgroundColor = [UIColor clearColor];
+    self.chatTextView.backgroundColor = [UIColor clearColor];
     
-    self.chatTextField.placeholder = @"Type a message...";
+    //self.chatTextField.placeholder = @"Type a message...";
     
-    self.chatTextField.delegate = self;
+    self.chatTextView.delegate = self;
     
-    [self.chatView addSubview:self.chatTextField];
+    [self.chatView addSubview:self.chatTextView];
     
     sendButton = [[UIButton alloc]initWithFrame:CGRectMake(240, 10, 75, 50)];
     
@@ -151,13 +151,13 @@
 
 -(void)sendButtonPressed:(id)sender
 {
-    [self.chatTextField resignFirstResponder];
+    [self.chatTextView resignFirstResponder];
     
     NSDate *date = [NSDate date];
     
     int timeInterval = [date timeIntervalSince1970];
         
-    Comment *comment = [[Comment alloc]initWithCommentId:@"" andUser:@"Sunayna Jain" andCommentText:self.chatTextField.text andTimeStamp:[NSNumber numberWithInt:timeInterval] andPostID:self.post.postId];
+    Comment *comment = [[Comment alloc]initWithCommentId:@"" andUser:@"Sunayna Jain" andCommentText:self.chatTextView.text andTimeStamp:[NSNumber numberWithInt:timeInterval] andPostID:self.post.postId];
 
     [self.post addComment:comment];
     
@@ -165,7 +165,7 @@
         
         [self.tableView reloadData];
         
-        self.chatTextField.text = @"";
+        self.chatTextView.text = @"";
     }];
 }
 
@@ -209,15 +209,24 @@
     if ([[[[CommentManager sharedInstance] populatedComments] allKeys] count]==0)
     {
         cell.questionTextView.text = @"No comments yet. Start a conversation!";
+        
+        cell.questionTextView.font = [UIFont fontWithName:@"Futura" size:15];
+        
+        cell.nameTextField.text =@"";
+        
+        cell.dateTextField.text = @"";
     }
-    
     else
     {
         Comment *this_comment = [[[[CommentManager sharedInstance] populatedComments] allValues] objectAtIndex:indexPath.row];
         
         cell.questionTextView.text = this_comment.commentText;
         
+        cell.questionTextView.font = [UIFont fontWithName:@"Futura" size:15];
+        
         cell.nameTextField.text = this_comment.userName;
+        
+        cell.nameTextField.font = [UIFont fontWithName:@"Futura" size:15];
         
         NSDate *commentDate = [NSDate dateWithTimeIntervalSince1970:this_comment.commentTimeStamp.intValue];
         
@@ -226,6 +235,8 @@
         [dateFormatter setDateFormat:@"MM/dd"];
         
         cell.dateTextField.text =  [dateFormatter stringFromDate:commentDate];
+        
+        cell.dateTextField.font= [UIFont fontWithName:@"Futura" size:15];
     }
     return cell;
 }
@@ -240,45 +251,24 @@
     return 130;
 }
 
-#pragma mark - Chat textfield
+#pragma mark - Chat textView
 
--(IBAction) textFieldDoneEditing : (id) sender
+-(IBAction) textViewDidEndEditing:(UITextView *)textView
 {
-    NSLog(@"the text content%@",self.chatTextField.text);
-    [sender resignFirstResponder];
-    [self.chatTextField resignFirstResponder];
+    NSLog(@"the text content%@",self.chatTextView.text);
+    [textView resignFirstResponder];
+    [self.chatTextView resignFirstResponder];
 }
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-//    if (self.chatTextField.text.length>0)
-//    {
-//        [sendButton setBackgroundColor:[[CommonClass sharedCommonClass] darkOrangeColor]];
-//        
-//        [sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    }
-//    else
-//    {
-//        [sendButton setBackgroundColor:[UIColor clearColor]];
-//        
-//        [sendButton setTitleColor:[[CommonClass sharedCommonClass] darkOrangeColor] forState:UIControlStateNormal];
-//    }
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
     return YES;
 }
 
--(IBAction) backgroundTap:(id) sender
-{
-    [self.chatTextField resignFirstResponder];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    NSLog(@"the text content%@",self.chatTextField.text);
-    
-    [textField resignFirstResponder];
-   
-    return YES;
-}
 
 #pragma mark-Keyboard handling methods
 
