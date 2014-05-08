@@ -8,7 +8,7 @@
 
 @implementation Comment
 
-- (id) initWithCommentId: (NSString*) commentId andUser:(NSString*) user andCommentText:(NSString *)text andTimeStamp:(NSNumber *)timeStamp
+- (id) initWithCommentId: (NSString*) commentId andUser:(NSString*) user andCommentText:(NSString *)text andTimeStamp:(NSNumber *)timeStamp andPostID:(NSString *)postId
 {
     self = [super init];
     if (self) {
@@ -16,6 +16,7 @@
         self.userName = user;
         self.commentText = text;
         self.commentTimeStamp = timeStamp;
+        self.postID = postId;
     }
     return self;
 }

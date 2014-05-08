@@ -10,6 +10,7 @@
 #import "PostManager.h"
 #import "CommonClass.h"
 #import "chatCell.h"
+#import "CommentManager.h"
 
 @interface chatDetailViewController ()
 {
@@ -66,7 +67,15 @@
     
     [self.view addSubview:self.questionView];
     
-    self.questionView.userInteractionEnabled = NO;
+    self.questionView.editable = NO;
+    
+    UIButton *questionButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.questionView.frame.size.width, self.questionView.frame.size.height)];
+    
+    questionButton.backgroundColor = [UIColor clearColor];
+    
+    [questionButton addTarget:self action:@selector(questionButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.questionView addSubview:questionButton];
     
     self.chatView = [[UIView alloc]initWithFrame:CGRectMake(0, 498, self.view.frame.size.width, 70)];
     
@@ -110,11 +119,34 @@
     
     self.tableView.delegate = self;
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.hidden = YES;
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     [self.view addSubview:self.tableView];
-
+    
+    UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-25, self.view.frame.size.height/2-25, 50, 50)];
+    
+    view.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    
+    [self.view addSubview:view];
+    
+    [view startAnimating];
+    
+    CommentManager* cm= [CommentManager sharedInstance];
+    
+    [cm fetchAllCommentsWithPostID:self.post.postId withcompletionhandler:^(NSMutableDictionary *dictionary) {
+        [view stopAnimating];
+        self.tableView.hidden = NO;
+        [self.tableView reloadData];
+    }];
+     
     // Do any additional setup after loading the view.
+}
+
+-(void)questionButtonPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 -(void)sendButtonPressed:(id)sender
@@ -124,21 +156,17 @@
     NSDate *date = [NSDate date];
     
     int timeInterval = [date timeIntervalSince1970];
-    
-    Comment *comment = [[Comment alloc] initWithCommentId:@"" andUser:@"Sunayna Jain" andCommentText:self.chatTextField.text andTimeStamp:[ NSNumber numberWithInt:timeInterval]];
-    
-//    Comment *firstComment = [self.post.comments firstObject];
-//    
-//    if ([firstComment.userName isEqualToString:@""] || [firstComment.commentTimeStamp isEqualToNumber:[NSNumber numberWithInt:0]])
-//    {
-//        [self.post.comments removeObject:firstComment];
-//    }
-    
+        
+    Comment *comment = [[Comment alloc]initWithCommentId:@"" andUser:@"Sunayna Jain" andCommentText:self.chatTextField.text andTimeStamp:[NSNumber numberWithInt:timeInterval] andPostID:self.post.postId];
+
     [self.post addComment:comment];
     
-    [[PostManager sharedInstance] addCommentToPost:self.post andComment:comment];
-    
-    [self.tableView reloadData];
+    [[CommentManager sharedInstance] addNewComment:comment toPost:self.post withCompletionHandler:^(NSError *error) {
+        
+        [self.tableView reloadData];
+        
+        self.chatTextField.text = @"";
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -156,9 +184,9 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([self.post.comments count]>0)
+    if ([[[[CommentManager sharedInstance] populatedComments] allKeys]count]>0)
     {
-    return [self.post.comments count];
+        return [[[[CommentManager sharedInstance] populatedComments] allKeys]count];
     }
     else
     {
@@ -176,25 +204,40 @@
     {
         cell = [[chatCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chatCell"];
     }
+    cell.questionTextView.userInteractionEnabled = NO;
     
-    if ([((Comment*)self.post.comments[indexPath.row]).userName isEqualToString:@""])
+    if ([[[[CommentManager sharedInstance] populatedComments] allKeys] count]==0)
     {
-        cell.questionTextView.text = @"No Comments yet. Start a conversation!";
-        
-        cell.nameTextField.text = @"";
-        
-        cell.dateTextField.text = @"";
+        cell.questionTextView.text = @"No comments yet. Start a conversation!";
     }
+    
     else
     {
-        cell.questionTextView.text = [self.post.comments objectAtIndex:[self.post.comments count]-(indexPath.row+1)];
+        Comment *this_comment = [[[[CommentManager sharedInstance] populatedComments] allValues] objectAtIndex:indexPath.row];
         
-        cell.nameTextField.text = @"Sunayna Jain";
+        cell.questionTextView.text = this_comment.commentText;
         
-        cell.dateTextField.text = @"2:30 PM, Today";
+        cell.nameTextField.text = this_comment.userName;
+        
+        NSDate *commentDate = [NSDate dateWithTimeIntervalSince1970:this_comment.commentTimeStamp.intValue];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        
+        [dateFormatter setDateFormat:@"MM/dd"];
+        
+        cell.dateTextField.text =  [dateFormatter stringFromDate:commentDate];
     }
-    
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 130;
 }
 
 #pragma mark - Chat textfield

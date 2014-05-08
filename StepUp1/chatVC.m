@@ -13,6 +13,7 @@
 #import "CalendarListVC.h"
 #import "MenteePostCreate.h"
 #import "AdminPostCreate.h"
+#import "chatDetailViewController.h"
 
 @interface chatVC ()
 {
@@ -94,7 +95,6 @@
         [self.tableView reloadData];
         self.tableView.hidden = NO;
     }];
-    
     // Do any additional setup after loading the view.
 }
 
@@ -175,7 +175,16 @@
         {
             Post *this_post = [[[[PostManager sharedInstance] populatedPosts] allValues] objectAtIndex:indexPath.row];
             
-            NSString *postString = [NSString stringWithFormat:@"%@:%@", this_post.title, this_post.text];
+            NSString *postString;
+            
+            if (this_post.title.length!=0)
+            {
+            postString = [NSString stringWithFormat:@"%@:%@", this_post.title, this_post.text];
+            }
+            else
+            {
+                postString = this_post.text;
+            }
             
             cell.postTextView.text = postString;
             
@@ -185,6 +194,19 @@
         }
     }
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    chatDetailViewController *chatDetail = [[chatDetailViewController alloc]init];
+    
+    chatDetail.post = [[[[PostManager sharedInstance] populatedPosts] allValues] objectAtIndex:indexPath.row];
+    
+    [self presentViewController:chatDetail animated:NO completion:^{
+        //any task ot be done on completion
+    }];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -215,10 +237,10 @@
     return view;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
     return 70;
 }
-
 
 -(void)plusButtonPressed:(id)sender
 {
@@ -231,13 +253,13 @@
 
 -(void)calendarButtonPressed:(id)sender
 {
-    
     [self dismissMe];
 }
 
 #pragma mark- Custom Modal Transitions
 
--(void) presentModalView:(UIViewController *)controller {
+-(void) presentModalView:(UIViewController *)controller
+{
     CATransition *transition = [CATransition animation];
     transition.duration = 0.35;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -249,7 +271,8 @@
     [self presentViewController:controller animated:NO completion:nil];
 }
 
--(void) dismissMe {
+-(void) dismissMe
+{
     CATransition *transition = [CATransition animation];
     transition.duration = 0.35;
     transition.timingFunction =
@@ -262,17 +285,5 @@
     
     [self dismissViewControllerAnimated:NO completion:nil];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

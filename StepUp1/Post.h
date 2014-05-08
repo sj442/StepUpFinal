@@ -20,8 +20,9 @@ typedef NS_OPTIONS(NSUInteger, PostType) {
 @property  (strong, nonatomic) NSString *userName;
 @property  (strong, nonatomic) NSNumber *commentTimeStamp;
 @property  (strong, nonatomic) NSString *commentText;
+@property  (strong, nonatomic) NSString *postID;
 
-- (id) initWithCommentId:(NSString*) commentID andUser:(NSString*) user andCommentText:(NSString*)text andTimeStamp:(NSNumber*) timeStamp;
+- (id) initWithCommentId:(NSString*) commentID andUser:(NSString*) user andCommentText:(NSString*)text andTimeStamp:(NSNumber*) timeStamp andPostID:(NSString*)postId;
 
 @end
 
