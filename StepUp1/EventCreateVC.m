@@ -137,7 +137,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 120;
+    return 150;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -157,7 +157,7 @@
     }
     else if (indexPath.row==3)
     {
-        return self.tableView.frame.size.height-120-70 - 66 -100-50;
+        return self.tableView.frame.size.height-150-70 - 66 -100-50;
     }
     else
     {
@@ -167,25 +167,57 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
-    view.backgroundColor = [[CommonClass sharedCommonClass]lightOrangeColor];
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
+//    view.backgroundColor = [[CommonClass sharedCommonClass]lightOrangeColor];
+//    
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+//    button.backgroundColor = [[CommonClass sharedCommonClass] darkOrangeColor];
+//    button.titleLabel.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:24];
+//    [button setTitle:@"upcoming" forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateHighlighted];
+//    button.frame = CGRectMake(20, 20, 200, 60);
+//    [view addSubview:button];
+//    
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(80, 80, 200, 40)];
+//    label.textColor = [UIColor whiteColor];
+//    label.text = @"events";
+//    label.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:24];
+//    [view addSubview:label];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.backgroundColor = [[CommonClass sharedCommonClass] darkOrangeColor];
-    button.titleLabel.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:24];
-    [button setTitle:@"upcoming" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateHighlighted];
-    button.frame = CGRectMake(20, 20, 200, 60);
-    [view addSubview:button];
+//    return view;
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(80, 80, 200, 40)];
-    label.textColor = [UIColor whiteColor];
-    label.text = @"events";
-    label.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:24];
-    [view addSubview:label];
+     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,150)];
     
-    return view;
+    headerView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
+    
+    UIButton *eventsButton = [[UIButton alloc]initWithFrame:CGRectMake(51, 30, 180, 63)];
+    
+    [eventsButton setBackgroundColor:[[CommonClass sharedCommonClass] darkOrangeColor]];
+    
+    [eventsButton setTitle:@"upcoming" forState:UIControlStateNormal];
+    
+    [eventsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    eventsButton.titleLabel.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:32];
+    
+    eventsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
+    eventsButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
+    [headerView addSubview:eventsButton];
+    
+    UILabel *eventsLabel = [[UILabel alloc]initWithFrame:CGRectMake(61, 92, 180, 63)];
+    
+    eventsLabel.text = @"events";
+    
+    eventsLabel.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:32];
+    
+    eventsLabel.textColor = [UIColor whiteColor];
+    
+    [headerView addSubview:eventsLabel];
+    
+    return headerView;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

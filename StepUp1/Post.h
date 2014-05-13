@@ -9,10 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
-typedef NS_OPTIONS(NSUInteger, PostType) {
-    POST_EVENTUPDATE = 0,
-    POST_QUESTIONS = 1 << 0,
-    POST_ANNOUNCEMENT = 1 << 1,
+//typedef NS_OPTIONS(NSUInteger, PostType) {
+//    POST_EVENTUPDATE = 0,
+//    POST_QUESTIONS = 1 << 0,
+//    POST_ANNOUNCEMENT = 1 << 1,
+//};
+
+typedef NS_ENUM(NSInteger, PostType) {
+    
+    POST_EVENTUPDATE,
+    POST_DISCUSSION,
+    POST_GENERAL
 };
 
 @interface Comment: NSObject

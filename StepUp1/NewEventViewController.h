@@ -11,7 +11,8 @@
 @interface NewEventViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
+
 @property (strong, nonatomic) NSNumber *eventIndex;
 
 

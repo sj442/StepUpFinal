@@ -204,6 +204,8 @@
         
         postTextView.backgroundColor = [UIColor colorWithRed:0.992f green:0.929f blue:0.851f alpha:0.95f];
         
+        postTextView.font = [UIFont fontWithName:@"Futura" size:15];
+        
         postTextView.contentInset = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
         
         postTextView.delegate = self;
@@ -365,7 +367,6 @@
 {
     return 3;
 }
-
 
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {

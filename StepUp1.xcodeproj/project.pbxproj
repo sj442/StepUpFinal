@@ -46,7 +46,6 @@
 		165C896B18A7B02A00018B79 /* EventCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C895B18A7B02A00018B79 /* EventCreateViewController.xib */; };
 		165C896C18A7B02A00018B79 /* EventDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 165C895D18A7B02A00018B79 /* EventDetailsCell.m */; };
 		165C896D18A7B02A00018B79 /* EventDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C895E18A7B02A00018B79 /* EventDetailsCell.xib */; };
-		165C896E18A7B02A00018B79 /* CalendarListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C895F18A7B02A00018B79 /* CalendarListVC.xib */; };
 		165C896F18A7B02A00018B79 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 165C896118A7B02A00018B79 /* CalendarCell.m */; };
 		165C897018A7B02A00018B79 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C896218A7B02A00018B79 /* CalendarCell.xib */; };
 		165C897118A7B02A00018B79 /* venueBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 165C896318A7B02A00018B79 /* venueBlack.png */; };
@@ -148,7 +147,6 @@
 		165C895C18A7B02A00018B79 /* EventDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsCell.h; sourceTree = "<group>"; };
 		165C895D18A7B02A00018B79 /* EventDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsCell.m; sourceTree = "<group>"; };
 		165C895E18A7B02A00018B79 /* EventDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailsCell.xib; sourceTree = "<group>"; };
-		165C895F18A7B02A00018B79 /* CalendarListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarListVC.xib; sourceTree = "<group>"; };
 		165C896018A7B02A00018B79 /* CalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCell.h; sourceTree = "<group>"; };
 		165C896118A7B02A00018B79 /* CalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
 		165C896218A7B02A00018B79 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
@@ -346,7 +344,6 @@
 				1607C35E19196D4D008BF027 /* postCell.xib */,
 				165C895B18A7B02A00018B79 /* EventCreateViewController.xib */,
 				165C895E18A7B02A00018B79 /* EventDetailsCell.xib */,
-				165C895F18A7B02A00018B79 /* CalendarListVC.xib */,
 			);
 			name = xibs;
 			sourceTree = "<group>";
@@ -357,8 +354,8 @@
 				165C899318A7E4A400018B79 /* Event.h */,
 				165C899418A7E4A400018B79 /* Event.m */,
 				165C899718A7E4A400018B79 /* Post.h */,
-				165C899B18A7E4A400018B79 /* User.h */,
 				165C899818A7E4A400018B79 /* Post.m */,
+				165C899B18A7E4A400018B79 /* User.h */,
 				165C899C18A7E4A400018B79 /* User.m */,
 				165C899518A7E4A400018B79 /* EventManager.h */,
 				165C899618A7E4A400018B79 /* EventManager.m */,
@@ -514,7 +511,6 @@
 				1607C39019215CCB008BF027 /* rsz_2refreshicon2x.png in Resources */,
 				1607C38E19215C33008BF027 /* rsz_1refreshicon2x.png in Resources */,
 				1698058B18B2770D0068A145 /* chatCell.xib in Resources */,
-				165C896E18A7B02A00018B79 /* CalendarListVC.xib in Resources */,
 				165C893818A7AFF600018B79 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

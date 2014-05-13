@@ -102,6 +102,9 @@
              
              [[[CommentManager sharedInstance] populatedComments] removeObjectForKey:commentID];
          }
+         dispatch_async(dispatch_get_main_queue(), ^{
+             completonHandler([[CommentManager sharedInstance] populatedComments]);
+         });
      }];
     
     [fb observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
@@ -116,6 +119,9 @@
             
             [[[CommentManager sharedInstance] populatedComments] setObject:this_comment forKey:commentId];
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completonHandler([[CommentManager sharedInstance] populatedComments]);
+        });
     }];
 }
 

@@ -43,10 +43,6 @@
     
     [post setPostId:[newPostRef name]];
     
-   // Comment *nullComment = [[Comment alloc]initWithCommentId:@"" andUser:@"" andCommentText:@"No Comments yet" andTimeStamp:[NSNumber numberWithInt:0]];
-    
-   // [post.comments addObject:nullComment];
-    
     [newPostRef setValue:@{@"time": postTimeString,
                            @"type": postType,
                            @"title": [post title],
@@ -71,7 +67,6 @@
          });
      }];
 }
-
 
 - (void) deletePost:(Post *) post withcompletionHandler:(void (^)(NSError *))completionHandler
 {
@@ -108,6 +103,7 @@
         }
     }];
 }
+
 - (void) deleteCommentFromPost:(Post *) post andComment: (Comment *) comment {
     Firebase *fb = [[PostManager sharedInstance] firebase];
     Firebase *postRef = [fb childByAppendingPath:[post postId]];
@@ -115,9 +111,11 @@
     Firebase *myCommentRef = [commentsRef childByAppendingPath:[comment commentId]];
     
     [myCommentRef removeValueWithCompletionBlock:^(NSError *error, Firebase *ref) {
-        if (error) {
+        if (error)
+        {
             NSLog(@"PostManager::removeCommentFromPost ALERT! Comment deletion failed %@", [comment commentId]);
-        } else {
+        } else
+        {
             NSLog(@"PostManager::removeCommentFromPost Comment added successfully");
         }
     }];
@@ -136,9 +134,9 @@
             NSString* userId = snapshot.value[@"userId"];
             NSString* eventId = snapshot.value[@"eventId"];
             NSString* postId = snapshot.name;
-          //  NSMutableArray* comments = snapshot.value[@"comments"];
+            
             Post* my_post = [[Post alloc] initWithPostId:postId andType:type andTitle: title andText: text andTime: time andUserId: userId andEventId: eventId];
-           // [my_post setComments:comments];
+
             [[[PostManager sharedInstance] populatedPosts] setObject:my_post forKey:postId];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -151,6 +149,9 @@
             NSString* postId = snapshot.name;
             [[[PostManager sharedInstance] populatedPosts] removeObjectForKey:postId];
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completonHandler([[PostManager sharedInstance] populatedPosts]);
+        });
     }];
     
     [fb observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
@@ -162,11 +163,14 @@
             NSString* userId = snapshot.value[@"userId"];
             NSString* eventId = snapshot.value[@"eventId"];
             NSString* postId = snapshot.name;
-           // NSMutableArray* comments = snapshot.value[@"comments"];
+            
             Post* my_post = [[Post alloc] initWithPostId:postId andType:type andTitle: title andText: text andTime: time andUserId: userId andEventId: eventId];
-           // [my_post setComments:comments];
+            
             [[[PostManager sharedInstance] populatedPosts] setObject:my_post forKey:postId];
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completonHandler([[PostManager sharedInstance] populatedPosts]);
+        });
     }];
 }
 

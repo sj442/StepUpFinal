@@ -19,6 +19,8 @@
 
 {
     UIView *headerView;
+    
+    EventCreateVC *newEvent;
 }
 
 @end
@@ -30,7 +32,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -40,14 +43,16 @@
 {
     [super viewDidLoad];
     
+    newEvent = [[EventCreateVC alloc]init];
+
     self.view.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
     
     headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,150)];
-    
     headerView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
     
     if (!self.fromAdminPost)
     {
+        
     UIButton *postsButton = [[UIButton alloc]initWithFrame:CGRectMake(5, 45, 36, 36)];
     
     [postsButton setBackgroundImage:[UIImage imageNamed:@"chatIcon.png"] forState:UIControlStateNormal];
@@ -55,7 +60,9 @@
     [postsButton addTarget:self action:@selector(postsButtonPressed:)  forControlEvents:UIControlEventTouchUpInside];
     
     [headerView addSubview:postsButton];
+        
     }
+    
     UIButton *eventsButton = [[UIButton alloc]initWithFrame:CGRectMake(51, 30, 180, 63)];
     
     [eventsButton setBackgroundColor:[[CommonClass sharedCommonClass] darkOrangeColor]];
@@ -85,7 +92,7 @@
     [self.view addSubview:headerView];
     
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, headerView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-headerView.frame.size.height) style:UITableViewStylePlain];
-    
+        
     UINib *nib = [UINib nibWithNibName:@"CalendarCell" bundle:nil];
     
     [self.tableView registerNib:nib forCellReuseIdentifier:@"CalendarCell"];
@@ -94,15 +101,15 @@
     
     self.tableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     
+    self.tableView.hidden = YES;
+    
     self.tableView.delegate = self;
     
     self.tableView.dataSource = self;
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
     [self.view addSubview:self.tableView];
     
-    self.tableView.hidden = YES;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     UITableView *tableview = self.tableView;
     
@@ -126,19 +133,16 @@
     EventManager* em = [EventManager sharedInstance];
     
     [em fetchAllEventsWithCompletionHandler:^(NSMutableDictionary *dictionary) {
+        
         [view stopAnimating];
-        self.tableView.hidden = NO;
+        
         [self.tableView reloadData];
+        
+        self.tableView.hidden = NO;
     }];
 
     // Do any additional setup after loading the view.
 }
-
--(void)handleRefresh:(id)sender
-{
-    
-}
-
 
 -(void)postsButtonPressed:(id)sender
 {
@@ -171,7 +175,7 @@
     
     view.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
     
-    UIButton *plusButton = [[UIButton alloc]initWithFrame:CGRectMake(130,10, 60, 50)];
+    UIButton *plusButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0, 320, 70)];
     
     [plusButton setTitle:@"+" forState:UIControlStateNormal];
     
@@ -244,9 +248,9 @@
 
 -(void)plusButtonPressed:(id)sender
 {
-    EventCreateVC *eventCreateVC = [[EventCreateVC alloc]init];
+   // EventCreateVC *eventCreateVC = [[EventCreateVC alloc]init];
     
-    [self presentViewController:eventCreateVC animated:NO completion:nil];
+    [self presentViewController:newEvent animated:NO completion:nil];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -262,7 +266,7 @@
         [self dismissMe];
     }
     
-    NewEventViewController *newEventVC = [[NewEventViewController alloc]initWithNibName:@"NewEventVC" bundle:nil];
+    NewEventViewController *newEventVC = [[NewEventViewController alloc]init];
     
     newEventVC.eventIndex = [[NSNumber alloc]initWithInteger:indexPath.row];
     

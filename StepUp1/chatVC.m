@@ -7,6 +7,7 @@
 //
 
 #import "chatVC.h"
+#import "Post.h"
 #import "CommonClass.h"
 #import "postCell.h"
 #import "PostManager.h"
@@ -14,10 +15,15 @@
 #import "MenteePostCreate.h"
 #import "AdminPostCreate.h"
 #import "chatDetailViewController.h"
+#import "AAPullToRefresh.h"
 
 @interface chatVC ()
 {
     UIView *headerView;
+    
+    NSMutableArray *filteredPosts;
+    
+    NSNumber *selectedPostType;
 }
 
 @end
@@ -27,7 +33,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -53,9 +60,13 @@
     
     UIButton *eventsButton = [[UIButton alloc]initWithFrame:CGRectMake(51, 30, 220, 63)];
     
+    [eventsButton addTarget:self action:@selector(eventsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     [eventsButton setBackgroundColor:[[CommonClass sharedCommonClass] darkOrangeColor]];
     
     [eventsButton setTitle:@"discussion" forState:UIControlStateNormal];
+    
+    selectedPostType = [[NSNumber alloc]initWithInteger:1];
     
     [eventsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
@@ -119,12 +130,22 @@
     UINib *nib = [UINib nibWithNibName:@"postCell" bundle:nil];
     
     [self.tableView registerNib:nib forCellReuseIdentifier:@"postCell"];
+    
+    UITableView *tableview = self.tableView;
+    
+    AAPullToRefresh *refresh = [self.tableView addPullToRefreshPosition:AAPullToRefreshPositionTop actionHandler:^(AAPullToRefresh *v) {
+        
+        [tableview reloadData];
+        
+        [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];
+    }];
+    
+    refresh.imageIcon = [UIImage imageNamed:@"rsz_1refreshicon"];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark-UITableView DataSource
@@ -136,14 +157,23 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([[[PostManager sharedInstance] populatedPosts] count]==0)
+//    if ([[[PostManager sharedInstance] populatedPosts] count]==0)
+//    {
+//        return 1;
+//    }
+//    
+//    else
+//    {
+//        return [[[PostManager sharedInstance] populatedPosts] count];
+//    }
+    
+    if ([[self filteredPostsForPostType:selectedPostType] count]==0)
     {
         return 1;
     }
-    
     else
     {
-        return [[[PostManager sharedInstance] populatedPosts] count];
+        return [[self filteredPostsForPostType:selectedPostType] count];
     }
 }
 
@@ -165,15 +195,29 @@
     
     cell.postTextView.userInteractionEnabled = NO;
     
-    if ([[[PostManager sharedInstance] populatedPosts] count]==0)
+//    if ([[[PostManager sharedInstance] populatedPosts] count]==0)
+//    {
+//        cell.postTextView.text = @"No Posts";
+//    }
+    
+    if ([[self filteredPostsForPostType:selectedPostType] count]==0)
     {
         cell.postTextView.text = @"No Posts";
+        
+        cell.postTextView.textColor = [UIColor whiteColor];
+        
+        cell.postTextView.font = [UIFont fontWithName:@"Futura" size:15];
     }
+    
     else
     {
-        if (indexPath.row<[[[PostManager sharedInstance] populatedPosts] count])
+        //if (indexPath.row<[[[PostManager sharedInstance] populatedPosts] count])
+            
+          if (indexPath.row< [[self filteredPostsForPostType:selectedPostType] count])
         {
-            Post *this_post = [[[[PostManager sharedInstance] populatedPosts] allValues] objectAtIndex:indexPath.row];
+            //Post *this_post = [[[[PostManager sharedInstance] populatedPosts] allValues] objectAtIndex:indexPath.row];
+            
+            Post *this_post = [[self filteredPostsForPostType:selectedPostType] objectAtIndex:indexPath.row];
             
             NSString *postString;
             
@@ -254,6 +298,67 @@
 -(void)calendarButtonPressed:(id)sender
 {
     [self dismissMe];
+}
+
+-(void)eventsButtonPressed:(id)sender
+{
+    UIButton *button = (UIButton*)sender;
+    
+    if ([selectedPostType isEqualToNumber:[NSNumber numberWithInteger:0]])
+    {
+        selectedPostType =[NSNumber numberWithInteger:1];
+        
+        [button setTitle:@"discussion" forState:UIControlStateNormal];
+        
+        //show discussion posts
+        
+       
+        
+        return;
+    }
+    else if ([selectedPostType isEqualToNumber:[NSNumber numberWithInteger:1]])
+    {
+        selectedPostType =[NSNumber numberWithInteger:2];
+        
+        [button setTitle:@"general" forState:UIControlStateNormal];
+        
+        //show general posts
+    }
+    else
+    {
+        selectedPostType =[NSNumber numberWithInteger:0];
+        //show event updates
+        
+        [button setTitle:@"event updates" forState:UIControlStateNormal];
+    }
+    
+    [self filteredPostsForPostType:selectedPostType];
+    
+    [self.tableView reloadData];
+}
+
+-(NSMutableArray*)filteredPostsForPostType:(NSNumber*) postType
+{
+    if (filteredPosts)
+    {
+        [filteredPosts removeAllObjects];
+    }
+    else
+    {
+        filteredPosts = [[NSMutableArray alloc]init];
+    }
+    
+    for (Post *post in [[[PostManager sharedInstance] populatedPosts] allValues])
+    {
+        if (post.type==[postType integerValue])
+        {
+            [filteredPosts addObject:post];
+        }
+    }
+    
+    NSLog(@"filtered posts now are %@", [filteredPosts description]);
+    
+    return filteredPosts;
 }
 
 #pragma mark- Custom Modal Transitions
