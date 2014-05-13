@@ -345,6 +345,11 @@
         
         [[EventManager sharedInstance] deleteEvent:this_event withCompletionHandler:^(NSError *error) {
             
+            if (error)
+            {
+                NSLog(@"error deleting %@ event", this_event.title);
+            }
+            
             [self dismissViewControllerAnimated:NO completion:nil];
         }];
     }

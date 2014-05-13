@@ -264,6 +264,9 @@
             NSString* eventId = snapshot.name;
             [[[EventManager sharedInstance] populatedEvents] removeObjectForKey:eventId];
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completonHandler([[EventManager sharedInstance] populatedEvents]);
+        });
     }];
     
     [fb observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
@@ -284,7 +287,10 @@
             Event* my_event = [[Event alloc] initWithEventId:eventId andType:type andStatus:status andTitle:title andDescription:description andTime:time andDate:date andEventTimeStamp:eventTimeStamp andDuration:duration andUrl:url andLocation:location andUserResponse:userResponse];
             
             [[[EventManager sharedInstance] populatedEvents] setObject:my_event forKey:eventId];
-        }        
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completonHandler([[EventManager sharedInstance] populatedEvents]);
+        });
     }];
 }
 

@@ -16,6 +16,16 @@
 		1607C36E191A9E3B008BF027 /* CalendarListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C36D191A9E3B008BF027 /* CalendarListVC.m */; };
 		1607C371191AA921008BF027 /* AdminPostCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C370191AA921008BF027 /* AdminPostCreate.m */; };
 		1607C374191AA933008BF027 /* MenteePostCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C373191AA933008BF027 /* MenteePostCreate.m */; };
+		1607C377191C3035008BF027 /* GrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C376191C3035008BF027 /* GrowingTextView.m */; };
+		1607C37A191C3134008BF027 /* TextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C379191C3134008BF027 /* TextViewInternal.m */; };
+		1607C383192154B3008BF027 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C382192154B2008BF027 /* ODRefreshControl.m */; };
+		1607C385192154C6008BF027 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1607C384192154C6008BF027 /* QuartzCore.framework */; };
+		1607C388192159B3008BF027 /* AAPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607C387192159B3008BF027 /* AAPullToRefresh.m */; };
+		1607C38A19215A4D008BF027 /* refreshIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1607C38919215A4D008BF027 /* refreshIcon@2x.png */; };
+		1607C38C19215BA7008BF027 /* rsz_refreshicon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1607C38B19215BA7008BF027 /* rsz_refreshicon2x.png */; };
+		1607C38E19215C33008BF027 /* rsz_1refreshicon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1607C38D19215C33008BF027 /* rsz_1refreshicon2x.png */; };
+		1607C39019215CCB008BF027 /* rsz_2refreshicon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1607C38F19215CCB008BF027 /* rsz_2refreshicon2x.png */; };
+		1607C39219215EC2008BF027 /* rsz_3refreshicon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1607C39119215EC2008BF027 /* rsz_3refreshicon2x.png */; };
 		1632DBA218E21FDC00D876B9 /* EventCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1632DBA118E21FDC00D876B9 /* EventCreateVC.m */; };
 		165C892618A7AFF600018B79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892518A7AFF600018B79 /* Foundation.framework */; };
 		165C892818A7AFF600018B79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165C892718A7AFF600018B79 /* CoreGraphics.framework */; };
@@ -95,6 +105,20 @@
 		1607C370191AA921008BF027 /* AdminPostCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminPostCreate.m; sourceTree = "<group>"; };
 		1607C372191AA933008BF027 /* MenteePostCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenteePostCreate.h; sourceTree = "<group>"; };
 		1607C373191AA933008BF027 /* MenteePostCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenteePostCreate.m; sourceTree = "<group>"; };
+		1607C375191C3035008BF027 /* GrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowingTextView.h; sourceTree = "<group>"; };
+		1607C376191C3035008BF027 /* GrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowingTextView.m; sourceTree = "<group>"; };
+		1607C378191C3134008BF027 /* TextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewInternal.h; sourceTree = "<group>"; };
+		1607C379191C3134008BF027 /* TextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewInternal.m; sourceTree = "<group>"; };
+		1607C381192154B2008BF027 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
+		1607C382192154B2008BF027 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
+		1607C384192154C6008BF027 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1607C386192159B3008BF027 /* AAPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPullToRefresh.h; sourceTree = "<group>"; };
+		1607C387192159B3008BF027 /* AAPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPullToRefresh.m; sourceTree = "<group>"; };
+		1607C38919215A4D008BF027 /* refreshIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refreshIcon@2x.png"; sourceTree = "<group>"; };
+		1607C38B19215BA7008BF027 /* rsz_refreshicon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_refreshicon2x.png; sourceTree = "<group>"; };
+		1607C38D19215C33008BF027 /* rsz_1refreshicon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_1refreshicon2x.png; sourceTree = "<group>"; };
+		1607C38F19215CCB008BF027 /* rsz_2refreshicon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_2refreshicon2x.png; sourceTree = "<group>"; };
+		1607C39119215EC2008BF027 /* rsz_3refreshicon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_3refreshicon2x.png; sourceTree = "<group>"; };
 		1632DBA018E21FDC00D876B9 /* EventCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCreateVC.h; sourceTree = "<group>"; };
 		1632DBA118E21FDC00D876B9 /* EventCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCreateVC.m; sourceTree = "<group>"; };
 		165C892218A7AFF600018B79 /* StepUp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepUp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1607C385192154C6008BF027 /* QuartzCore.framework in Frameworks */,
 				165C898018A7B1BA00018B79 /* SystemConfiguration.framework in Frameworks */,
 				1698058418B1B0CE0068A145 /* Firebase.framework in Frameworks */,
 				165C897E18A7B19000018B79 /* Security.framework in Frameworks */,
@@ -219,6 +244,7 @@
 		165C892418A7AFF600018B79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1607C384192154C6008BF027 /* QuartzCore.framework */,
 				1698058318B1B0CE0068A145 /* Firebase.framework */,
 				165C897F18A7B1BA00018B79 /* SystemConfiguration.framework */,
 				165C897D18A7B19000018B79 /* Security.framework */,
@@ -245,6 +271,14 @@
 				165C893518A7AFF600018B79 /* AppDelegate.m */,
 				165C899018A7BE4D00018B79 /* CommonClass.h */,
 				165C899118A7BE4D00018B79 /* CommonClass.m */,
+				1607C375191C3035008BF027 /* GrowingTextView.h */,
+				1607C376191C3035008BF027 /* GrowingTextView.m */,
+				1607C378191C3134008BF027 /* TextViewInternal.h */,
+				1607C379191C3134008BF027 /* TextViewInternal.m */,
+				1607C381192154B2008BF027 /* ODRefreshControl.h */,
+				1607C382192154B2008BF027 /* ODRefreshControl.m */,
+				1607C386192159B3008BF027 /* AAPullToRefresh.h */,
+				1607C387192159B3008BF027 /* AAPullToRefresh.m */,
 				165C893718A7AFF600018B79 /* Images.xcassets */,
 				165C892C18A7AFF600018B79 /* Supporting Files */,
 			);
@@ -294,6 +328,11 @@
 				1675E8FE1912CE870033B067 /* edit@2x.png */,
 				1607C36A191A92CD008BF027 /* chatIcon@2x.png */,
 				1675E9011912FAFE0033B067 /* trash.png */,
+				1607C39119215EC2008BF027 /* rsz_3refreshicon2x.png */,
+				1607C38F19215CCB008BF027 /* rsz_2refreshicon2x.png */,
+				1607C38B19215BA7008BF027 /* rsz_refreshicon2x.png */,
+				1607C38D19215C33008BF027 /* rsz_1refreshicon2x.png */,
+				1607C38919215A4D008BF027 /* refreshIcon@2x.png */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -457,6 +496,8 @@
 				165C89A818A7FA0900018B79 /* login-background@2x.png in Resources */,
 				1675E9021912FAFE0033B067 /* trash.png in Resources */,
 				165C897118A7B02A00018B79 /* venueBlack.png in Resources */,
+				1607C39219215EC2008BF027 /* rsz_3refreshicon2x.png in Resources */,
+				1607C38A19215A4D008BF027 /* refreshIcon@2x.png in Resources */,
 				165C896B18A7B02A00018B79 /* EventCreateViewController.xib in Resources */,
 				1607C35F19196D4D008BF027 /* postCell.xib in Resources */,
 				165C893018A7AFF600018B79 /* InfoPlist.strings in Resources */,
@@ -467,8 +508,11 @@
 				165C897318A7B02A00018B79 /* clockBlack.png in Resources */,
 				165C896D18A7B02A00018B79 /* EventDetailsCell.xib in Resources */,
 				165C89AD18A8013400018B79 /* AppIcon60x60@2x.png in Resources */,
+				1607C38C19215BA7008BF027 /* rsz_refreshicon2x.png in Resources */,
 				1675E9001912CE870033B067 /* edit@2x.png in Resources */,
 				165C89AB18A800CB00018B79 /* iTunesArtwork@2x.png in Resources */,
+				1607C39019215CCB008BF027 /* rsz_2refreshicon2x.png in Resources */,
+				1607C38E19215C33008BF027 /* rsz_1refreshicon2x.png in Resources */,
 				1698058B18B2770D0068A145 /* chatCell.xib in Resources */,
 				165C896E18A7B02A00018B79 /* CalendarListVC.xib in Resources */,
 				165C893818A7AFF600018B79 /* Images.xcassets in Resources */,
@@ -493,6 +537,7 @@
 				165C89A318A7E4A400018B79 /* User.m in Sources */,
 				165C89A918A7FA0900018B79 /* loginViewController.m in Sources */,
 				165C893618A7AFF600018B79 /* AppDelegate.m in Sources */,
+				1607C377191C3035008BF027 /* GrowingTextView.m in Sources */,
 				165C893218A7AFF600018B79 /* main.m in Sources */,
 				165C896F18A7B02A00018B79 /* CalendarCell.m in Sources */,
 				165C899F18A7E4A400018B79 /* Event.m in Sources */,
@@ -507,11 +552,14 @@
 				165C89A418A7E4A400018B79 /* UserManager.m in Sources */,
 				165C896C18A7B02A00018B79 /* EventDetailsCell.m in Sources */,
 				165C896918A7B02A00018B79 /* NewEventViewController.m in Sources */,
+				1607C388192159B3008BF027 /* AAPullToRefresh.m in Sources */,
 				165C89A118A7E4A400018B79 /* Post.m in Sources */,
+				1607C37A191C3134008BF027 /* TextViewInternal.m in Sources */,
 				1607C365191A76FB008BF027 /* chatVC.m in Sources */,
 				1607C36219197E64008BF027 /* CommentManager.m in Sources */,
 				165C899218A7BE4D00018B79 /* CommonClass.m in Sources */,
 				1607C35A1919310A008BF027 /* chatDetailViewController.m in Sources */,
+				1607C383192154B3008BF027 /* ODRefreshControl.m in Sources */,
 				1698058718B1B8A80068A145 /* chatViewController.m in Sources */,
 				165C896718A7B02A00018B79 /* CalendarListViewController.m in Sources */,
 				1607C371191AA921008BF027 /* AdminPostCreate.m in Sources */,

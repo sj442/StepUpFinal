@@ -13,6 +13,7 @@
 #import "EventCreateVC.h"
 #import "NewEventViewController.h"
 #import "chatVC.h"
+#import "AAPullToRefresh.h"
 
 @interface CalendarListVC ()
 
@@ -83,7 +84,36 @@
     
     [self.view addSubview:headerView];
     
-    [self setupTableView];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, headerView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-headerView.frame.size.height) style:UITableViewStylePlain];
+    
+    UINib *nib = [UINib nibWithNibName:@"CalendarCell" bundle:nil];
+    
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"CalendarCell"];
+    
+    self.tableView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
+    
+    self.tableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    
+    self.tableView.delegate = self;
+    
+    self.tableView.dataSource = self;
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [self.view addSubview:self.tableView];
+    
+    self.tableView.hidden = YES;
+    
+    UITableView *tableview = self.tableView;
+    
+    AAPullToRefresh *refresh = [self.tableView addPullToRefreshPosition:AAPullToRefreshPositionTop actionHandler:^(AAPullToRefresh *v) {
+        
+        [tableview reloadData];
+        
+        [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];
+    }];
+    
+    refresh.imageIcon = [UIImage imageNamed:@"rsz_1refreshicon"];
     
     UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-25, self.view.frame.size.height/2-25, 50, 50)];
     
@@ -104,28 +134,11 @@
     // Do any additional setup after loading the view.
 }
 
--(void)setupTableView
+-(void)handleRefresh:(id)sender
 {
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, headerView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-headerView.frame.size.height) style:UITableViewStylePlain];
     
-    self.tableView.hidden = YES;
-    
-    UINib *nib = [UINib nibWithNibName:@"CalendarCell" bundle:nil];
-    
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"CalendarCell"];
-    
-    self.tableView.backgroundColor = [[CommonClass sharedCommonClass] lightOrangeColor];
-    
-    self.tableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-    
-    self.tableView.delegate = self;
-    
-    self.tableView.dataSource = self;
-    
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    [self.view addSubview:self.tableView];
 }
+
 
 -(void)postsButtonPressed:(id)sender
 {
@@ -226,7 +239,6 @@
     cell.headerLabel.font = [UIFont fontWithName:@"Futura" size:18];
 
     }
-    
     return cell;
 }
 
@@ -291,17 +303,5 @@
     
     [self dismissViewControllerAnimated:NO completion:nil];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

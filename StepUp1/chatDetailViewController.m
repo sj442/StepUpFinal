@@ -11,6 +11,7 @@
 #import "CommonClass.h"
 #import "chatCell.h"
 #import "CommentManager.h"
+#import "GrowingTextView.h"
 
 @interface chatDetailViewController ()
 {
@@ -77,22 +78,42 @@
     
     [self.questionView addSubview:questionButton];
     
-    self.chatView = [[UIView alloc]initWithFrame:CGRectMake(0, 498, self.view.frame.size.width, 70)];
+    self.chatView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-70, self.view.frame.size.width, 70)];
     
+    self.chatView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+
     [self.view addSubview:self.chatView];
     
     self.chatView.backgroundColor = [UIColor colorWithRed:0.992f green:0.929f blue:0.851f alpha:0.95f];
     
-    self.chatTextView = [[UITextView alloc] initWithFrame:CGRectMake(5, 10, 230, 50)];
+    self.chatTextView = [[UITextView alloc] initWithFrame:CGRectMake(5, 5, 230, 60)];
     
-    self.chatTextView.backgroundColor = [UIColor clearColor];
+    self.chatView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+
+    self.chatTextView.backgroundColor = [UIColor whiteColor];
     
-    //self.chatTextField.placeholder = @"Type a message...";
+    self.chatTextView.font = [UIFont fontWithName:@"Futura" size:15.0];
     
-    self.chatTextView.delegate = self;
+  //  [self.chatTextView setPlaceholder:@"Type a message.."];
+    
+  //  self.chatTextView.placeholderColor = [UIColor lightGrayColor];
+    
+    //self.chatTextView.isScrollable = NO;
+    
+    self.chatTextView.contentInset = UIEdgeInsetsMake(0, 5, 0, 5);
+    
+//	self.chatTextView.minNumberOfLines = 1;
+//    
+//	self.chatTextView.maxNumberOfLines = 6;
+//
+	self.chatTextView.returnKeyType = UIReturnKeyGo;
+    
+	self.chatTextView.delegate = self;
+    
+  //  self.chatTextView.internalTextView.scrollIndicatorInsets = UIEdgeInsetsMake(5, 0, 5, 0);
     
     [self.chatView addSubview:self.chatTextView];
-    
+  
     sendButton = [[UIButton alloc]initWithFrame:CGRectMake(240, 10, 75, 50)];
     
     [sendButton setTitle:@"Send" forState:UIControlStateNormal];
@@ -262,11 +283,30 @@
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    if([text isEqualToString:@"\n"]) {
+    if([text isEqualToString:@"\n"])
+    {
         [textView resignFirstResponder];
         return NO;
     }
     return YES;
+}
+
+-(void)textViewDidChange:(UITextView *)textView
+{
+    CGFloat contentHeight = textView.contentSize.height;
+    
+    CGSize textSize = [textView.text sizeWithAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"Futura" size:15.0] }];
+    
+    if (self.chatTextView.frame.size.height< contentHeight)
+    {
+        self.chatView.frame = CGRectMake(self.chatView.frame.origin.x, self.chatView.frame.origin.y-(contentHeight-self.chatTextView.frame.size.height), self.chatTextView.frame.size.width, self.chatView.frame.size.height+ (contentHeight-self.chatTextView.frame.size.height));
+        
+        self.chatTextView.frame = CGRectMake(self.chatTextView.frame.origin.x, self.chatTextView.frame.origin.y-(contentHeight-self.chatTextView.frame.size.height), self.chatTextView.frame.size.width, contentHeight);
+    }
+    
+    NSLog(@"content height %f", contentHeight);
+    
+    NSLog(@"text height %f", textSize.height);
 }
 
 
@@ -292,7 +332,8 @@
     [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
     [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] getValue:&keyboardFrame];
     
-    [UIView beginAnimations:nil context:nil];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDuration:animationDuration];
     [UIView setAnimationCurve:animationCurve];
     
@@ -300,9 +341,11 @@
     
     [self.chatView setFrame:CGRectMake(self.chatView.frame.origin.x, self.chatView.frame.origin.y- keyboardFrame.size.height, self.chatView.frame.size.width, self.chatView.frame.size.height)];
     
+    
     [self.view addSubview:self.chatView];
     
     [UIView commitAnimations];
+    
 }
 
 -(void) keyboardWillHide:(NSNotification*)aNotification
@@ -313,11 +356,12 @@
     NSTimeInterval animationDuration;
     UIViewAnimationCurve animationCurve;
     CGRect keyboardFrame;
+    
     [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
     [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
     [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] getValue:&keyboardFrame];
     
-    [UIView beginAnimations:nil context:nil];
+    [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
     [UIView setAnimationCurve:animationCurve];
     
@@ -326,6 +370,16 @@
     [self.view addSubview:self.chatView];
     
     [UIView commitAnimations];
+}
+
+- (void)growingTextView:(GrowingTextView *)growingTextView willChangeHeight:(float)height
+{
+    float diff = (growingTextView.frame.size.height - height);
+    
+	CGRect r = self.chatView.frame;
+    r.size.height -= diff;
+    r.origin.y += diff;
+	self.chatView.frame = r;
 }
 
 @end

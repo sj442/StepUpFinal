@@ -263,7 +263,7 @@
     
     self.timeChosen = self.timePicker.date;
     
-    NSTimeInterval timeInterval = [self.timeChosen timeIntervalSince1970];
+   // NSTimeInterval timeInterval = [self.timeChosen timeIntervalSince1970];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     
@@ -283,7 +283,7 @@
     
     self.dateChosen = self.datePicker.date;
     
-    NSTimeInterval dateInterval = [self.dateChosen timeIntervalSince1970];
+   // NSTimeInterval dateInterval = [self.dateChosen timeIntervalSince1970];
     
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc]init];
     
