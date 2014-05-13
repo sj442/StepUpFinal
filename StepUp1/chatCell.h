@@ -16,5 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *dateTextField;
 
+@property (weak, nonatomic) IBOutlet UIButton *trashButton;
+
+
 
 @end

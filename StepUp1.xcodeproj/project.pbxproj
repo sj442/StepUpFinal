@@ -75,6 +75,9 @@
 		1698058718B1B8A80068A145 /* chatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1698058618B1B8A80068A145 /* chatViewController.m */; };
 		1698058B18B2770D0068A145 /* chatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1698058A18B2770D0068A145 /* chatCell.xib */; };
 		1698058E18B29ACE0068A145 /* chatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1698058D18B29ACE0068A145 /* chatCell.m */; };
+		16BF9C001922AAAA002307BB /* whiteTrash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BF9BFF1922AAAA002307BB /* whiteTrash@2x.png */; };
+		16BF9C041922AAE2002307BB /* orangeTrash.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 16BF9C031922AAE2002307BB /* orangeTrash.jpeg */; };
+		16BF9C061922B4A8002307BB /* orangeEdit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BF9C051922B4A8002307BB /* orangeEdit@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +190,9 @@
 		1698058A18B2770D0068A145 /* chatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = chatCell.xib; sourceTree = "<group>"; };
 		1698058C18B29ACE0068A145 /* chatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatCell.h; sourceTree = "<group>"; };
 		1698058D18B29ACE0068A145 /* chatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chatCell.m; sourceTree = "<group>"; };
+		16BF9BFF1922AAAA002307BB /* whiteTrash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteTrash@2x.png"; sourceTree = "<group>"; };
+		16BF9C031922AAE2002307BB /* orangeTrash.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = orangeTrash.jpeg; sourceTree = "<group>"; };
+		16BF9C051922B4A8002307BB /* orangeEdit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeEdit@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,12 +330,15 @@
 				165C896618A7B02A00018B79 /* clockGrey.png */,
 				1675E8FD1912CE870033B067 /* checkmark@2x.png */,
 				1675E8FE1912CE870033B067 /* edit@2x.png */,
+				16BF9C051922B4A8002307BB /* orangeEdit@2x.png */,
 				1607C36A191A92CD008BF027 /* chatIcon@2x.png */,
 				1675E9011912FAFE0033B067 /* trash.png */,
 				1607C39119215EC2008BF027 /* rsz_3refreshicon2x.png */,
 				1607C38F19215CCB008BF027 /* rsz_2refreshicon2x.png */,
 				1607C38B19215BA7008BF027 /* rsz_refreshicon2x.png */,
 				1607C38D19215C33008BF027 /* rsz_1refreshicon2x.png */,
+				16BF9BFF1922AAAA002307BB /* whiteTrash@2x.png */,
+				16BF9C031922AAE2002307BB /* orangeTrash.jpeg */,
 				1607C38919215A4D008BF027 /* refreshIcon@2x.png */,
 			);
 			name = resources;
@@ -494,6 +503,7 @@
 				1675E9021912FAFE0033B067 /* trash.png in Resources */,
 				165C897118A7B02A00018B79 /* venueBlack.png in Resources */,
 				1607C39219215EC2008BF027 /* rsz_3refreshicon2x.png in Resources */,
+				16BF9C041922AAE2002307BB /* orangeTrash.jpeg in Resources */,
 				1607C38A19215A4D008BF027 /* refreshIcon@2x.png in Resources */,
 				165C896B18A7B02A00018B79 /* EventCreateViewController.xib in Resources */,
 				1607C35F19196D4D008BF027 /* postCell.xib in Resources */,
@@ -510,7 +520,9 @@
 				165C89AB18A800CB00018B79 /* iTunesArtwork@2x.png in Resources */,
 				1607C39019215CCB008BF027 /* rsz_2refreshicon2x.png in Resources */,
 				1607C38E19215C33008BF027 /* rsz_1refreshicon2x.png in Resources */,
+				16BF9C061922B4A8002307BB /* orangeEdit@2x.png in Resources */,
 				1698058B18B2770D0068A145 /* chatCell.xib in Resources */,
+				16BF9C001922AAAA002307BB /* whiteTrash@2x.png in Resources */,
 				165C893818A7AFF600018B79 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

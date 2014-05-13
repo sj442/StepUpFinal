@@ -22,6 +22,8 @@
 
 @property (strong, nonatomic) UITextView *questionView;
 
+@property (strong, nonatomic) UIView *headerView;
+
 @property (strong, nonatomic) UITextView *chatTextView;
 
 @property (strong, nonatomic) UIView *chatView;
@@ -56,9 +58,33 @@
     
     CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
     
-    self.questionView = [[UITextView alloc]initWithFrame:CGRectMake(0, statusBarHeight, self.view.frame.size.width,130)];
+    self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, statusBarHeight, self.view.frame.size.width, 130)];
     
-    self.questionView.backgroundColor = [[CommonClass sharedCommonClass] darkOrangeColor];
+    self.headerView.backgroundColor = [[CommonClass sharedCommonClass] darkOrangeColor];
+    
+    [self.view addSubview:self.headerView];
+    
+    self.questionView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,90)];
+    
+    self.questionView.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
+    
+    UIButton *trashButton = [[UIButton alloc]initWithFrame:CGRectMake(270, self.headerView.frame.size.height-40, 30, 30)];
+    
+    [trashButton addTarget:self action:@selector(deletePostPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *editButton = [[UIButton alloc]initWithFrame:CGRectMake(5, self.headerView.frame.size.height-40, 30, 30)];
+    
+    [editButton setBackgroundImage:[UIImage imageNamed:@"orangeEdit"] forState:UIControlStateNormal];
+    
+    [editButton addTarget:self action:@selector(editPostPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.headerView addSubview:editButton];
+    
+    [self.headerView addSubview:trashButton];
+    
+    [trashButton setBackgroundImage:[UIImage imageNamed:@"whiteTrash"] forState:UIControlStateNormal];
+    
+    self.questionView.backgroundColor = [UIColor clearColor];
     
     self.questionView.textColor = [UIColor whiteColor];
     
@@ -66,7 +92,7 @@
 
     self.questionView.text = [NSString stringWithFormat:@"%@:%@", self.post.title, self.post.text];
     
-    [self.view addSubview:self.questionView];
+    [self.headerView addSubview:self.questionView];
     
     self.questionView.editable = NO;
     
@@ -94,23 +120,11 @@
     
     self.chatTextView.font = [UIFont fontWithName:@"Futura" size:15.0];
     
-  //  [self.chatTextView setPlaceholder:@"Type a message.."];
-    
-  //  self.chatTextView.placeholderColor = [UIColor lightGrayColor];
-    
-    //self.chatTextView.isScrollable = NO;
-    
     self.chatTextView.contentInset = UIEdgeInsetsMake(0, 5, 0, 5);
     
-//	self.chatTextView.minNumberOfLines = 1;
-//    
-//	self.chatTextView.maxNumberOfLines = 6;
-//
 	self.chatTextView.returnKeyType = UIReturnKeyGo;
     
 	self.chatTextView.delegate = self;
-    
-  //  self.chatTextView.internalTextView.scrollIndicatorInsets = UIEdgeInsetsMake(5, 0, 5, 0);
     
     [self.chatView addSubview:self.chatTextView];
   
@@ -130,7 +144,7 @@
     
     [self.chatView addSubview:sendButton];
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, statusBarHeight+self.questionView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-statusBarHeight-self.questionView.frame.size.height-self.chatView.frame.size.height) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, statusBarHeight+self.headerView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-statusBarHeight-self.headerView.frame.size.height-self.chatView.frame.size.height) style:UITableViewStylePlain];
     
     UINib *nib = [UINib nibWithNibName:@"chatCell" bundle:[NSBundle mainBundle]];
     
@@ -163,6 +177,16 @@
     }];
      
     // Do any additional setup after loading the view.
+}
+
+-(void)deletePostPressed:(id)sender
+{
+    
+}
+
+-(void)editPostPressed:(id)sender
+{
+    
 }
 
 -(void)questionButtonPressed:(id)sender
@@ -258,6 +282,8 @@
         cell.dateTextField.text =  [dateFormatter stringFromDate:commentDate];
         
         cell.dateTextField.font= [UIFont fontWithName:@"Futura" size:15];
+        
+        [cell.trashButton setBackgroundImage:[UIImage imageNamed:@"orangeTrash.jpeg"] forState:UIControlStateNormal];
     }
     return cell;
 }
@@ -291,24 +317,24 @@
     return YES;
 }
 
--(void)textViewDidChange:(UITextView *)textView
-{
-    CGFloat contentHeight = textView.contentSize.height;
-    
-    CGSize textSize = [textView.text sizeWithAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"Futura" size:15.0] }];
-    
-    if (self.chatTextView.frame.size.height< contentHeight)
-    {
-        self.chatView.frame = CGRectMake(self.chatView.frame.origin.x, self.chatView.frame.origin.y-(contentHeight-self.chatTextView.frame.size.height), self.chatTextView.frame.size.width, self.chatView.frame.size.height+ (contentHeight-self.chatTextView.frame.size.height));
-        
-        self.chatTextView.frame = CGRectMake(self.chatTextView.frame.origin.x, self.chatTextView.frame.origin.y-(contentHeight-self.chatTextView.frame.size.height), self.chatTextView.frame.size.width, contentHeight);
-    }
-    
-    NSLog(@"content height %f", contentHeight);
-    
-    NSLog(@"text height %f", textSize.height);
-}
-
+//-(void)textViewDidChange:(UITextView *)textView
+//{
+//    CGFloat contentHeight = textView.contentSize.height;
+//    
+//    CGSize textSize = [textView.text sizeWithAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"Futura" size:15.0] }];
+//    
+//    if (self.chatTextView.frame.size.height< contentHeight)
+//    {
+//        self.chatView.frame = CGRectMake(self.chatView.frame.origin.x, self.chatView.frame.origin.y-(contentHeight-self.chatTextView.frame.size.height), self.chatTextView.frame.size.width, self.chatView.frame.size.height+ (contentHeight-self.chatTextView.frame.size.height));
+//        
+//        self.chatTextView.frame = CGRectMake(self.chatTextView.frame.origin.x, self.chatTextView.frame.origin.y-(contentHeight-self.chatTextView.frame.size.height), self.chatTextView.frame.size.width, contentHeight);
+//    }
+//    
+//    NSLog(@"content height %f", contentHeight);
+//    
+//    NSLog(@"text height %f", textSize.height);
+//}
+//
 
 #pragma mark-Keyboard handling methods
 
@@ -345,7 +371,6 @@
     [self.view addSubview:self.chatView];
     
     [UIView commitAnimations];
-    
 }
 
 -(void) keyboardWillHide:(NSNotification*)aNotification

@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rs4-vF-IYG">
-                        <rect key="frame" x="11" y="52" width="302" height="83"/>
+                        <rect key="frame" x="11" y="36" width="263" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -31,12 +31,20 @@
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBx-g9-MI4">
+                        <rect key="frame" x="282" y="96" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateTextField" destination="azO-h9-Iwm" id="GmJ-03-BWb"/>
                 <outlet property="nameTextField" destination="ofn-6d-Wbg" id="JeB-m5-vJO"/>
                 <outlet property="questionTextView" destination="rs4-vF-IYG" id="JE0-gI-l9n"/>
+                <outlet property="trashButton" destination="QBx-g9-MI4" id="TXR-xA-MDy"/>
             </connections>
         </tableViewCell>
     </objects>

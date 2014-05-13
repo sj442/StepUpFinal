@@ -68,6 +68,8 @@
     
     selectedPostType = [[NSNumber alloc]initWithInteger:1];
     
+    [self filteredPostsForPostType:selectedPostType];
+    
     [eventsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     eventsButton.titleLabel.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:32];
@@ -157,24 +159,24 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if ([[[PostManager sharedInstance] populatedPosts] count]==0)
-//    {
-//        return 1;
-//    }
-//    
-//    else
-//    {
-//        return [[[PostManager sharedInstance] populatedPosts] count];
-//    }
-    
-    if ([[self filteredPostsForPostType:selectedPostType] count]==0)
+    if ([[[PostManager sharedInstance] populatedPosts] count]==0)
     {
         return 1;
     }
+    
     else
     {
-        return [[self filteredPostsForPostType:selectedPostType] count];
+        return [[[PostManager sharedInstance] populatedPosts] count];
     }
+    
+//    if ([filteredPosts count]==0)
+//    {
+//        return 1;
+//    }
+//    else
+//    {
+//        return [filteredPosts count];
+//    }
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -195,29 +197,29 @@
     
     cell.postTextView.userInteractionEnabled = NO;
     
-//    if ([[[PostManager sharedInstance] populatedPosts] count]==0)
-//    {
-//        cell.postTextView.text = @"No Posts";
-//    }
-    
-    if ([[self filteredPostsForPostType:selectedPostType] count]==0)
+    if ([[[PostManager sharedInstance] populatedPosts] count]==0)
     {
         cell.postTextView.text = @"No Posts";
-        
-        cell.postTextView.textColor = [UIColor whiteColor];
-        
-        cell.postTextView.font = [UIFont fontWithName:@"Futura" size:15];
     }
+    
+//    if ([filteredPosts count]==0)
+//    {
+//        cell.postTextView.text = @"No Posts";
+//        
+//        cell.postTextView.textColor = [UIColor whiteColor];
+//        
+//        cell.postTextView.font = [UIFont fontWithName:@"Futura" size:15];
+//    }
     
     else
     {
-        //if (indexPath.row<[[[PostManager sharedInstance] populatedPosts] count])
+        if (indexPath.row<[[[PostManager sharedInstance] populatedPosts] count])
             
-          if (indexPath.row< [[self filteredPostsForPostType:selectedPostType] count])
+          //if (indexPath.row< [[self filteredPostsForPostType:selectedPostType] count])
         {
-            //Post *this_post = [[[[PostManager sharedInstance] populatedPosts] allValues] objectAtIndex:indexPath.row];
+            Post *this_post = [[[[PostManager sharedInstance] populatedPosts] allValues] objectAtIndex:indexPath.row];
             
-            Post *this_post = [[self filteredPostsForPostType:selectedPostType] objectAtIndex:indexPath.row];
+           // Post *this_post = [filteredPosts objectAtIndex:indexPath.row];
             
             NSString *postString;
             
@@ -311,10 +313,6 @@
         [button setTitle:@"discussion" forState:UIControlStateNormal];
         
         //show discussion posts
-        
-       
-        
-        return;
     }
     else if ([selectedPostType isEqualToNumber:[NSNumber numberWithInteger:1]])
     {
@@ -350,7 +348,7 @@
     
     for (Post *post in [[[PostManager sharedInstance] populatedPosts] allValues])
     {
-        if (post.type==[postType integerValue])
+        if (post.type== [postType integerValue])
         {
             [filteredPosts addObject:post];
         }

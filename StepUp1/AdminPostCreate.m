@@ -320,7 +320,6 @@
     {
         postTitle = [NSString stringWithFormat:@"UPDATE %@", self.eventSelected.title];
     }
-    
     else
     {
         postTitle = @"";
@@ -335,20 +334,29 @@
         eventID = @"";
     }
     
-    Post *newPost = [[Post alloc]initWithPostId:@"" andType:selectedRow andTitle:postTitle   andText:postTextView.text andTime:[NSDate date] andUserId:@"" andEventId:eventID];
-    
-    [[PostManager sharedInstance] addNewPost:newPost withcompletionHandler:^(NSError *error) {
-        if (error)
-        {
-            NSLog(@"error saving new post!");
-        }
-        else
-        {
-            NSLog(@"new post saved successfully!");
-        }
+    if (postTextView.text.length>0)
+    {
         
-        [self dismissViewControllerAnimated:NO completion:nil];
-    }];
+        Post *newPost = [[Post alloc]initWithPostId:@"" andType:selectedRow andTitle:postTitle   andText:postTextView.text andTime:[NSDate date] andUserId:@"" andEventId:eventID];
+        
+        [[PostManager sharedInstance] addNewPost:newPost withcompletionHandler:^(NSError *error) {
+            if (error)
+            {
+                NSLog(@"error saving new post!");
+            }
+            else
+            {
+                NSLog(@"new post saved successfully!");
+            }
+            [self dismissViewControllerAnimated:NO completion:nil];
+        }];
+    }
+    else
+    {
+        UIAlertView *alertivew = [[UIAlertView alloc] initWithTitle:@"Cannot save a blank post!" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alertivew show];
+    }
 }
 
 -(void)cancelButtonPressed:(id)sender
